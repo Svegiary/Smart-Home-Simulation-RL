@@ -1,5 +1,5 @@
 from enums.MotionSensorEvents import MotionSensorEvent
-from models.StateObservation.Subject import Subject
+from models.Devices.StateObservation.Subject import Subject
 
 
 class MotionSensor(Subject):

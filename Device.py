@@ -3,8 +3,7 @@ from abc import ABC, abstractmethod
 
 class Device(ABC):
   
-  def __init__(self , name , power_consumption):
-    self.power_consumption = power_consumption
+  def __init__(self,name):
     self.name = name
   
   def turn_on(self):

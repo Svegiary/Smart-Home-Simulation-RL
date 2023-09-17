@@ -1,6 +1,12 @@
 from abc import ABC, abstractmethod
 
 class LightBulbState(ABC):
+  
+  def __init__(self,power_consumption, brightness, color_temp):
+    self._power_consumption = power_consumption
+    self._brightness = brightness
+    self._color_temp = color_temp
+  
   @abstractmethod
   def turn_on(self):
     pass 
@@ -13,20 +19,60 @@ class LightBulbState(ABC):
   def set_color_temp(color_temp):
     pass
   
-  @abstractmethod
-  def calculate_power_consumption(self):
+  @abstractmethod 
+  def set_brightness(brightness):
     pass
+
+  @property
+  def power_consumption(self):
+    return self._power_consumption
   
 class OnState(LightBulbState):
-  def turn_on(self):
-    print("The light bulb is on")
-  def turn_off(self):
-    print("Turning off light bulb")
-    return 
 
+  def __init__(self):
+    color_temp = 6000
+    brightness = 100
+    power_consumption = 10
+    super().__init__(power_consumption,brightness,color_temp)    
+  
+  def turn_on(self) -> LightBulbState:
+    print("The light bulb is on")
+    return self
+    
+  def turn_off(self) -> LightBulbState:
+    print("Turning off light bulb")
+    return OffState()
+    
+  def set_color_temp(self,color_temp) -> LightBulbState:
+    self._color_temp = color_temp
+    return self
+  
+  def set_brightness(self,brightness) -> LightBulbState:
+    self._brightness = brightness
+    self._power_consumption = 0 #get power consumption
+    return self
+    
+  
 class OffState(LightBulbState):
-  def turn_on(self):
+  
+  def __init__(self):
+    color_temp = 0
+    brightness = 0
+    power_consumption = 0
+    super().__init__(power_consumption,brightness,color_temp)
+  
+  def turn_on(self) -> LightBulbState:
     return OnState()
-  def turn_off(self):
+  
+  def turn_off(self) -> LightBulbState:
     print("The Light Bulb is off")
+    return self
+  
+  def set_color_temp(self,color_temp) -> LightBulbState:
+    print("The Light Bulb is off")
+    return self
+  
+  def set_brightness(self,brightness):
+    print("The Light Bulb is off")
+    return self
     

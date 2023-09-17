@@ -15,6 +15,5 @@ class DeviceState(ABC):
         pass
 
     @abstractmethod
-    @property
     def power_consumption(self):
         pass

@@ -19,6 +19,5 @@ class DeviceController(ABC):
         pass
 
     @abstractmethod
-    @property
     def state(self):
         pass

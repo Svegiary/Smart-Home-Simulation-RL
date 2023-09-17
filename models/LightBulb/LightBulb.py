@@ -4,7 +4,9 @@ from models.LightBulb.LightBulbController import LightBulbController
 
 class LightBulb(Device):
     def __init__(self, name):
-        super().__init__(name, LightBulbController())
+
+        cont = LightBulbController()
+        super().__init__(name, cont)
 
     def turn_on(self):
         self.controller.turn_on()

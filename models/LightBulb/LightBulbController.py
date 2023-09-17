@@ -1,8 +1,9 @@
-from models.Controller import DeviceController
+from models.DeviceController import DeviceController
 from models.LightBulb.LightBulbState import OffState
+from models.StateObservation.Observer import Observer
 
 
-class LightBulbController(DeviceController):
+class LightBulbController(DeviceController, Observer):
 
     def __init__(self):
         super().__init__(OffState())
@@ -21,6 +22,9 @@ class LightBulbController(DeviceController):
 
     def set_brightness(self, brightness):
         self._setState(self._state.set_brightness(brightness))
+
+    def update(self):
+        self._setState(self._state.update())
 
     @property
     def state(self):

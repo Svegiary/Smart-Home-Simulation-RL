@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 from models.DeviceState import DeviceState
+from models.StateObservation.Observer import Observer
 
 
 class LightBulbState(DeviceState, ABC):
@@ -24,6 +25,10 @@ class LightBulbState(DeviceState, ABC):
 
     @abstractmethod
     def set_brightness(brightness):
+        pass
+
+    @abstractmethod
+    def update(self):
         pass
 
     @property
@@ -56,6 +61,9 @@ class OnState(LightBulbState):
         self._power_consumption = 0  # get power consumption
         return self
 
+    def update(self):
+        return OffState()
+
 
 class OffState(LightBulbState):
 
@@ -79,3 +87,6 @@ class OffState(LightBulbState):
     def set_brightness(self, brightness) -> LightBulbState:
         print("The Light Bulb is off")
         return self
+
+    def update(self):
+        return OnState()

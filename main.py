@@ -10,9 +10,15 @@ Observer = LightBulbSubscriber(BedroomLight)
 Sensor.attach(Observer)
 RepresentState.print(BedroomLight)
 print(Sensor.motion_detected)
-Sensor.motion_detected = True
-Sensor.notify()
+Sensor.trigger()
 RepresentState.print(BedroomLight)
 
-Sensor.notify()
+Sensor.trigger()
+RepresentState.print(BedroomLight)
+
+Sensor.trigger()
+RepresentState.print(BedroomLight)
+Sensor.trigger()
+RepresentState.print(BedroomLight)
+Sensor.trigger()
 RepresentState.print(BedroomLight)

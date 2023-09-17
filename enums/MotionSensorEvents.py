@@ -1,6 +1,6 @@
-import enum
+from enum import Enum
 
 
-class MotionSensorEvent(enum):
+class MotionSensorEvent(Enum):
     LEAVING = "Leaving"
     COMING = "Coming"

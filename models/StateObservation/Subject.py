@@ -12,6 +12,6 @@ class Subject(ABC):
     def detach(self, observer):
         self.observers.remove(observer)
 
+    @abstractmethod
     def notify(self):
-        for observer in self.observers:
-            observer.update(observer)
+        pass

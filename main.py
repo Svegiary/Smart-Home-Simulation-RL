@@ -1,15 +1,18 @@
 from models.LightBulb.LightBulb import LightBulb
+from models.LightBulb.LightBulbSubscriber import LightBulbSubscriber
+from models.MotionSensor.MotionSensor import MotionSensor
 from models.StateRepresentation.StateRepresentation import RepresentState
 
 
 BedroomLight = LightBulb("Bedroom Light")
-print("Light state is ", BedroomLight.state)
+Sensor = MotionSensor("BedRoom Sensor")
+Observer = LightBulbSubscriber(BedroomLight)
+Sensor.attach(Observer)
+RepresentState.print(BedroomLight)
+print(Sensor.motion_detected)
+Sensor.motion_detected = True
+Sensor.notify()
+RepresentState.print(BedroomLight)
 
-BedroomLight.turn_on()
-print("Light state is ", BedroomLight.state)
-
-BedroomLight.turn_off()
-print("Light state is ", BedroomLight.state)
-
-
+Sensor.notify()
 RepresentState.print(BedroomLight)

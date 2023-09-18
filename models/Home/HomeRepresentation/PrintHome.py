@@ -2,7 +2,7 @@ from models.Devices.StateRepresentation.StateRepresentation import RepresentStat
 from models.Home.Home import Home
 from models.Home.HomeRepresentation.PrintDevices import PrintDevices
 from models.Home.HomeRepresentation.PrintSensors import PrintSensors
-from models.Sensors.PrintSensors import RepresentSensor
+from models.Sensors.RepresentSensor import RepresentSensor
 
 
 class PrintHome:

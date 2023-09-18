@@ -1,6 +1,6 @@
-from models.DeviceController import DeviceController
-from models.LightBulb.LightBulbState import OffState
-from models.StateObservation.Observer import Observer
+from models.Devices.DeviceController import DeviceController
+from models.Devices.LightBulb.LightBulbState import OffState
+from models.Devices.StateObservation.Observer import Observer
 
 
 class LightBulbController(DeviceController, Observer):

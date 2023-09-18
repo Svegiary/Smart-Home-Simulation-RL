@@ -1,6 +1,6 @@
 from enums.MotionSensorEvents import MotionSensorEvent
-from models.LightBulb.LightBulb import LightBulb
-from models.StateObservation.Observer import Observer
+from models.Devices.LightBulb.LightBulb import LightBulb
+from models.Devices.StateObservation.Observer import Observer
 
 
 class LightBulbSubscriber(Observer):

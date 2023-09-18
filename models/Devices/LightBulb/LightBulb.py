@@ -1,5 +1,5 @@
-from models.Device import Device
-from models.LightBulb.LightBulbController import LightBulbController
+from models.Devices.Device import Device
+from models.Devices.LightBulb.LightBulbController import LightBulbController
 
 
 class LightBulb(Device):

@@ -1,11 +1,10 @@
+from ast import List
 import string
 
 from models.Devices.Device import Device
+from models.Home.Rooms.Rooms import Room
 
 
 class Home:
     def __init__(self):
-        self.room_devices = {}
-
-    def addDevice(self, room: string, device: Device):
-        self.room_devices[room] = device
+        self.rooms: List[Room] = []

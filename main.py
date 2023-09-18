@@ -1,15 +1,16 @@
-from models.LightBulb.LightBulb import LightBulb
-from models.LightBulb.LightBulbSubscriber import LightBulbSubscriber
-from models.MotionSensor.MotionSensor import MotionSensor
-from models.StateRepresentation.StateRepresentation import RepresentState
+from models.Devices.LightBulb.LightBulb import LightBulb
+from models.Devices.LightBulb.LightBulbSubscriber import LightBulbSubscriber
+from models.Sensors.MotionSensor.MotionSensor import MotionSensor
+from models.Devices.StateRepresentation.StateRepresentation import RepresentState
+from models.Home.HomeRepresentation.PrintSensors import RepresentSensor
 
 
 BedroomLight = LightBulb("Bedroom Light")
-Sensor = MotionSensor("BedRoom Sensor")
+Sensor = MotionSensor("BedroomSensor")
 Observer = LightBulbSubscriber(BedroomLight)
 Sensor.attach(Observer)
 RepresentState.print(BedroomLight)
-print(Sensor.motion_detected)
+print(Sensor.triggered)
 Sensor.trigger()
 RepresentState.print(BedroomLight)
 
@@ -22,3 +23,4 @@ Sensor.trigger()
 RepresentState.print(BedroomLight)
 Sensor.trigger()
 RepresentState.print(BedroomLight)
+RepresentSensor.print(Sensor)

@@ -1,21 +1,21 @@
 from enums.MotionSensorEvents import MotionSensorEvent
 from models.Devices.StateObservation.Subject import Subject
+from models.Sensors.Sensor import Sensor
 
 
-class MotionSensor(Subject):
+class MotionSensor(Subject, Sensor):
     def __init__(self, name):
         super().__init__()
-        self.name = name
-        self.motion_detected = False
+        super(Subject, self).__init__(name)
 
     def trigger(self):
-        self.motion_detected = not self.motion_detected
-        print(self.motion_detected)
+        self.triggered = not self.triggered
+        print(self.triggered)
         self.notify()
 
     def notify(self):
         for observer in self.observers:
-            if self.motion_detected == True:
+            if self.triggered == True:
                 observer.update(MotionSensorEvent.LEAVING)
             else:
                 observer.update(MotionSensorEvent.COMING)

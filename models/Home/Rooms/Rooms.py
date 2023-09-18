@@ -1,25 +1,26 @@
 from abc import ABC,abstractmethod
 from ast import List
 
+from enums.Rooms import HomeRooms
+
 from models.Devices.StateRepresentation.StateRepresentation import RepresentState
 
 from models.Devices.Device import Device
 
-class Room(ABC):
+class Room():
   
-  def __init__(self):
+  def __init__(self , name: HomeRooms):
+    self.name = name
     self.devices : List[Device] = []
     self.sensors = [] #TODO: implement sensor abstract class
     self.is_human_inside = False
     
   
-  @abstractmethod
   def attach_device(self,device: Device):
-    pass
+    self.devices.append(device)
   
-  @abstractmethod
   def detach_device(self,device: Device):
-    pass
+    return self.devices.remove(device)
   
   def print_devices_and_state(self):
     for device in self.devices:
@@ -28,4 +29,5 @@ class Room(ABC):
   def print_sensors(self):
     for sensor in self.sensors:
       print(sensor)
+  
   

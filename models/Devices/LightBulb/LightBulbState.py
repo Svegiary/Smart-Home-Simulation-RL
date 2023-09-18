@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from models.DeviceState import DeviceState
-from models.StateObservation.Observer import Observer
+from models.Devices.DeviceState import DeviceState
+from models.Devices.StateObservation.Observer import Observer
 
 
 class LightBulbState(DeviceState, ABC):

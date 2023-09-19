@@ -9,10 +9,6 @@ class Device(ABC):
         self.device_type = device_type
 
     @abstractmethod
-    def turn_on(self):
-        pass
-
-    @abstractmethod
     def turn_off(self):
         pass
 

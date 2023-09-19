@@ -8,11 +8,12 @@ from models.Home.Rooms.Rooms import Room
 
 
 class Home:
-    def __init__(self, rooms: List[Room]):
+    def __init__(self, rooms: Dict[HomeRooms, Room]):
         self.rooms: Dict[HomeRooms, Room] = {room.name: room for room in rooms}
         self.house_temp = 0
         self.house_light = 0
         self.house_humidity = 0
+        # TODO: noise level
 
     def __getitem__(self, room):
         return self.rooms.get(room, None)

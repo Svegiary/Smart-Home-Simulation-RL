@@ -5,8 +5,10 @@ from models.Home.HomeRepresentation.PrintHome import PrintHome
 from models.Sensors.MotionSensor.MotionSensor import MotionSensor
 from models.Devices.StateRepresentation.StateRepresentation import RepresentState
 from models.Sensors.RepresentSensor import RepresentSensor
+from simulation.Simulation import Simulation
 from simulation.config.simulation_config import SimulationConfig
 from simulation.data_generation.data_factories.temperature_factory import TemperatureFactory
+from simulation.data_generation.simulation_data_factory import SimulationDataFactory
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
 from simulation.simulation_factory.simulation_factory import SimulationFactory
 
@@ -27,6 +29,14 @@ simulation_params = {
 }
 config.set_simulation_params(simulation_params)
 
-sim_factory = SimulationFactory(config).create_simulation()
+timestamps = TimestampGeneration(config)
+temp_factory = TemperatureFactory(config, timestamps)
+humidity_factory = 0  # TODO:implement
+sunlight_factory = 0  # TODO:implement
 
-print(sim_factory.simulation_data.temp_data)
+data = SimulationDataFactory.create_simulation_data(
+    temp_factory, humidity_factory, sunlight_factory)
+
+sim = Simulation(timestamps, data)
+
+print(sim.simulation_data.temp_data)

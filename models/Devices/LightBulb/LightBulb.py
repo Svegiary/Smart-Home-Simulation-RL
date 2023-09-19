@@ -6,9 +6,7 @@ from models.Devices.LightBulb.LightBulbController import LightBulbController
 class LightBulb(Device):
     def __init__(self, name, cont):
 
-        self.cont = cont
-        super().__init__(name, cont)
-        self.device_type = DeviceType.LIGHT
+        super().__init__(name, cont, DeviceType.LIGHT)
 
     def turn_on(self):
         self.controller.turn_on()
@@ -28,4 +26,4 @@ class LightBulb(Device):
 
     @property
     def power_consumption(self):
-        return self._state.power_consumption
+        return self.controller.state

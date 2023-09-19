@@ -11,5 +11,4 @@ class PrintDevices:
     def print(devices: Dict[DeviceType, Device]):
         print(devices.items())
         for device_type, device in devices.items():
-            print(device)
             RepresentState.print(device)

@@ -1,5 +1,5 @@
 from models.Devices.DeviceController import DeviceController
-from models.Devices.LightBulb.LightBulbState import OffState
+from models.Devices.LightBulb.LightBulbState import OffState, OnState
 from models.Devices.StateObservation.Observer import Observer
 
 
@@ -12,19 +12,30 @@ class LightBulbController(DeviceController, Observer):
         self._state = state
 
     def turn_on(self):
-        self._setState(self._state.turn_on())
+        self._state.turn_on()
+        self._setState(OnState())
+        return self.state
 
     def turn_off(self):
-        self._setState(self._state.turn_off())
+        self._state.turn_off()
+        self._setState(OffState())
+        return self.state
 
     def set_color_temp(self, color_temp):
-        self._setState(self._state.set_color_temp(color_temp))
+        self._state.set_color_temp(color_temp)
+        return self.state
 
     def set_brightness(self, brightness):
-        self._setState(self._state.set_brightness(brightness))
+        self._state.set_brightness(brightness)
+        return self.state
 
     def update(self):
-        self._setState(self._state.update())
+        if self.state is OnState():
+            self._setState(OffState())
+            return self.state
+        else:
+            self._setState(OnState())
+            return self.state
 
     @property
     def state(self):

@@ -10,8 +10,8 @@ class PrintHome:
     def print(home: Home):
         print("###############################################################")
 
-        for room in home.rooms:
-            print(room.name, " : ")
-            PrintDevices.print(room.devices)
-            PrintSensors.print(room.sensors)
+        for room_name, room_instance in home.rooms.items():
+            print(room_name, " : ")
+            PrintDevices.print(room_instance.devices)
+            PrintSensors.print(room_instance.sensors)
         print("###############################################################")

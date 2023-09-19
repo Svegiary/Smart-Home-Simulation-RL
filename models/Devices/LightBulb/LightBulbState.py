@@ -46,20 +46,16 @@ class OnState(LightBulbState):
 
     def turn_on(self) -> LightBulbState:
         print("The light bulb is on")
-        return self
 
     def turn_off(self) -> LightBulbState:
         print("Turning off light bulb")
-        return OffState()
 
     def set_color_temp(self, color_temp) -> LightBulbState:
         self._color_temp = color_temp
-        return self
 
     def set_brightness(self, brightness) -> LightBulbState:
         self._brightness = brightness
         self._power_consumption = 0  # get power consumption
-        return self
 
     def update(self):
         return OffState()
@@ -74,19 +70,16 @@ class OffState(LightBulbState):
         super().__init__(power_consumption, brightness, color_temp)
 
     def turn_on(self) -> LightBulbState:
-        return OnState()
+        print("Turning on light bulb")
 
     def turn_off(self) -> LightBulbState:
         print("The Light Bulb is off")
-        return self
 
     def set_color_temp(self, color_temp) -> LightBulbState:
         print("The Light Bulb is off")
-        return self
 
     def set_brightness(self, brightness) -> LightBulbState:
         print("The Light Bulb is off")
-        return self
 
     def update(self):
         return OnState()

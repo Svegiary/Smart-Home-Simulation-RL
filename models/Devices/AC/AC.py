@@ -6,8 +6,7 @@ class AirConditioner(Device):
 
     def __init__(self, name, controller):
         self.controller = controller
-        super.__init__(name, controller)
-        self.device_type = DeviceType.AC
+        super().__init__(name, controller,  DeviceType.AC)
 
     def turn_on(self):
         self.controller.turn_on()

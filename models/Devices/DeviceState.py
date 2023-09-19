@@ -7,10 +7,6 @@ class DeviceState(ABC):
         self._power_consumption = power_consumption
 
     @abstractmethod
-    def turn_on(self):
-        pass
-
-    @abstractmethod
     def turn_off(self):
         pass
 

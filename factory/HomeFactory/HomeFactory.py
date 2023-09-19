@@ -14,6 +14,10 @@ class HomeFactory:
         kitchen = Room(HomeRooms.KITCHEN)
         bathroom = Room(HomeRooms.BATHROOM)
 
+        living_room_ac = DeviceFactory.create_device(
+            DeviceType.AC, "Living Room AC"
+        )
+
         living_room_light = DeviceFactory.create_device(
             DeviceType.LIGHT, "Living Room Light")
         living_room_motion_sensor = MotionSensor("Living Room Motion Sensor")
@@ -31,6 +35,7 @@ class HomeFactory:
         bathroom_motion_sensor = MotionSensor("Bathroom Motion Sensor")
 
         living_room.attach_device(living_room_light)
+        living_room.attach_device(living_room_ac)
         living_room.attach_sensor(living_room_motion_sensor)
 
         bedroom_room.attach_device(bedroom_room_light)

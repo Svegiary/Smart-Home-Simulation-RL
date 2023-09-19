@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from ast import List
+from typing import Dict
 
 from enums.Rooms import HomeRooms
 
@@ -7,21 +8,24 @@ from models.Devices.StateRepresentation.StateRepresentation import RepresentStat
 
 from models.Devices.Device import Device
 from models.Sensors.Sensor import Sensor
+from enums.DeviceType import DeviceType
 
 
 class Room():
 
     def __init__(self, name: HomeRooms):
         self.name = name
-        self.devices: List[Device] = []
+        self.devices: Dict[DeviceType, Device] = {
+        }
         self.sensors = []  # TODO: implement sensor abstract class
         self.is_human_inside = False
 
     def attach_device(self, device: Device):
-        self.devices.append(device)
+        self.devices[device.device_type] = device
 
-    def detach_device(self, device: Device):
-        return self.devices.remove(device)
+    def detach_device(self, device_type: DeviceType):
+        if device_type in self.devices:
+            del self.devices[device_type]
 
     def attach_sensor(self, sensor: Sensor):
         self.sensors.append(sensor)

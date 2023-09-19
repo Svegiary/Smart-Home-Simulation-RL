@@ -1,12 +1,14 @@
+from enums.DeviceType import DeviceType
 from models.Devices.Device import Device
 from models.Devices.LightBulb.LightBulbController import LightBulbController
 
 
 class LightBulb(Device):
-    def __init__(self, name):
+    def __init__(self, name, cont):
 
-        cont = LightBulbController()
+        self.cont = cont
         super().__init__(name, cont)
+        self.device_type = DeviceType.LIGHT
 
     def turn_on(self):
         self.controller.turn_on()

@@ -22,7 +22,3 @@ class AirConditioner(Device):
     @property
     def state(self):
         return self.controller.state
-
-    @property
-    def power_consumption(self):
-        return self.controller.state

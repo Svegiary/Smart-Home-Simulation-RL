@@ -6,3 +6,4 @@
 # 2) noise level calculation
 # 3) simulation and home communication
 # 4) humidity and sunlight value generation
+# 5) rethink folder structure

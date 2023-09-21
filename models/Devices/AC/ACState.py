@@ -21,12 +21,12 @@ class ACState(DeviceState, ABC):
 
     @property
     def power_consumption(self):
-        return super().power_consumption()
+        pass
 
 
 class HeatingState(ACState):
-    def __init__(self, power_consumption):
-        super().__init__(power_consumption)
+    def __init__(self):
+        super().__init__(self.current_power)
 
     def turn_off(self):
 
@@ -38,10 +38,14 @@ class HeatingState(ACState):
     def set_cooling(self):
         print("AC in cooling mode")
 
+    @property
+    def power_consumption(self):
+        return self.current_power
+
 
 class CoolingState(ACState):
-    def __init__(self, power_consumption):
-        super().__init__(power_consumption)
+    def __init__(self):
+        super().__init__(self.current_power)
 
     def turn_off(self):
         print("Turning off AC")
@@ -51,6 +55,10 @@ class CoolingState(ACState):
 
     def set_cooling(self):
         print("AC in Cooling mode")
+
+    @property
+    def power_consumption(self):
+        return self.current_power
 
 
 class OffState(ACState):
@@ -65,3 +73,7 @@ class OffState(ACState):
 
     def set_cooling(self):
         print("AC in Cooling mode")
+
+    @property
+    def power_consumption(self):
+        return 0

@@ -33,7 +33,7 @@ class LightBulbState(DeviceState, ABC):
 
     @property
     def power_consumption(self):
-        return self._power_consumption
+        pass
 
 
 class OnState(LightBulbState):
@@ -56,6 +56,10 @@ class OnState(LightBulbState):
     def set_brightness(self, brightness) -> LightBulbState:
         self._brightness = brightness
         self._power_consumption = 0  # get power consumption
+
+    @property
+    def power_consumption(self):
+        pass
 
     def update(self):
         return OffState()
@@ -80,6 +84,10 @@ class OffState(LightBulbState):
 
     def set_brightness(self, brightness) -> LightBulbState:
         print("The Light Bulb is off")
+
+    @property
+    def power_consumption(self):
+        pass
 
     def update(self):
         return OnState()

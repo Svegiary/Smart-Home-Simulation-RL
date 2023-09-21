@@ -12,6 +12,10 @@ class DeviceController(ABC):
         self.actions: list[Action] = []
 
     @abstractmethod
+    def initialize_controller(self, actions):
+        pass
+
+    @abstractmethod
     def _setState(self, state):
         pass
 

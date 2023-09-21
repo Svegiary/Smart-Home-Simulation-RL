@@ -1,3 +1,4 @@
+from models.Devices.Actions.Action import Action
 from models.Devices.DeviceController import DeviceController
 from models.Devices.LightBulb.LightBulbState import OffState, OnState
 from models.Devices.StateObservation.Observer import Observer
@@ -7,9 +8,16 @@ class LightBulbController(DeviceController, Observer):
 
     def __init__(self):
         super().__init__(OffState())
+        self.initialize_controller(self.actions)
 
     def _setState(self, state):
         self._state = state
+
+    def initialize_controller(self, actions):
+        actions.append(Action(self.turn_on))
+        actions.append(Action(self.turn_off))
+        actions.append(Action(self.set_color_temp))
+        actions.append(Action(self.set_brightness))
 
     def turn_on(self):
         self._state.turn_on()

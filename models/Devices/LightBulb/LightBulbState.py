@@ -59,7 +59,8 @@ class OnState(LightBulbState):
 
     @property
     def power_consumption(self):
-        pass
+        self.current_power = 5
+        return self.current_power
 
     def update(self):
         return OffState()
@@ -87,7 +88,7 @@ class OffState(LightBulbState):
 
     @property
     def power_consumption(self):
-        pass
+        return 0
 
     def update(self):
         return OnState()

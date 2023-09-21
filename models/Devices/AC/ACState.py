@@ -4,8 +4,9 @@ from models.Devices.DeviceState import DeviceState
 
 
 class ACState(DeviceState, ABC):
-    def __init__(self, power_consumption):
-        super().__init__(power_consumption)
+
+    def __init__(self):
+        super().__init__()
 
     @abstractmethod
     def turn_off(self):
@@ -25,8 +26,9 @@ class ACState(DeviceState, ABC):
 
 
 class HeatingState(ACState):
+
     def __init__(self):
-        super().__init__(self.current_power)
+        super().__init__()
 
     def turn_off(self):
 
@@ -40,12 +42,14 @@ class HeatingState(ACState):
 
     @property
     def power_consumption(self):
-        return self.current_power
+        self.current_power = 2000
+        return 2000
 
 
 class CoolingState(ACState):
+
     def __init__(self):
-        super().__init__(self.current_power)
+        super().__init__()
 
     def turn_off(self):
         print("Turning off AC")
@@ -58,12 +62,14 @@ class CoolingState(ACState):
 
     @property
     def power_consumption(self):
-        return self.current_power
+        self.current_power = 2000
+        return 2000
 
 
 class OffState(ACState):
+
     def __init__(self):
-        super().__init__(0)
+        super().__init__()
 
     def turn_off(self):
         print("The device is OFF")
@@ -74,6 +80,6 @@ class OffState(ACState):
     def set_cooling(self):
         print("AC in Cooling mode")
 
-    @property
     def power_consumption(self):
+        self.current_power = 0
         return 0

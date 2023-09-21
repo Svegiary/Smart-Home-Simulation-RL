@@ -6,8 +6,8 @@ from models.Devices.StateObservation.Observer import Observer
 
 class LightBulbState(DeviceState, ABC):
 
-    def __init__(self, power_consumption, brightness, color_temp):
-        super().__init__(power_consumption)
+    def __init__(self, brightness, color_temp):
+        super().__init__()
         self._brightness = brightness
         self._color_temp = color_temp
 
@@ -42,7 +42,7 @@ class OnState(LightBulbState):
         color_temp = 6000
         brightness = 100
 
-        super().__init__(self.current_power, brightness, color_temp)
+        super().__init__(brightness, color_temp)
 
     def turn_on(self) -> LightBulbState:
         print("The light bulb is on")
@@ -71,7 +71,7 @@ class OffState(LightBulbState):
         color_temp = 0
         brightness = 0
         power_consumption = 0
-        super().__init__(power_consumption, brightness, color_temp)
+        super().__init__(brightness, color_temp)
 
     def turn_on(self) -> LightBulbState:
         print("Turning on light bulb")

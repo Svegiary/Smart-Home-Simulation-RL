@@ -1,18 +1,21 @@
+from typing import Callable
 from models.Devices.AC.ACState import *
+from models.Devices.Actions.Action import Action
 from models.Devices.DeviceController import DeviceController
 
 
 class AcController(DeviceController):
     def __init__(self):
         super().__init__(OffState())
+        self.initialize_controller(self.actions)
 
     def _setState(self, state):
         self._state = state
 
-    def turn_on(self):
-        self._state.set_heating()
-        self._setState(HeatingState())
-        return self.state
+    def initialize_controller(self, actions):
+        actions.append(Action(self.turn_off))
+        actions.append(Action(self.set_heating))
+        actions.append(Action(self.set_cooling))
 
     def turn_off(self):
         self._state.turn_off()
@@ -30,5 +33,5 @@ class AcController(DeviceController):
         return self.state
 
     @property
-    def state(self):
+    def state(self) -> DeviceState:
         return self._state

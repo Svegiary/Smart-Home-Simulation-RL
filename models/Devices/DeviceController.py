@@ -1,10 +1,15 @@
 from abc import ABC, abstractmethod
 
+from models.Devices.Actions.Action import Action
+from models.Devices.DeviceState import DeviceState
+
 
 class DeviceController(ABC):
 
     def __init__(self, state):
         self._state = state
+
+        self.actions: list[Action] = []
 
     @abstractmethod
     def _setState(self, state):
@@ -15,5 +20,5 @@ class DeviceController(ABC):
         pass
 
     @abstractmethod
-    def state(self):
+    def state(self) -> DeviceState:
         pass

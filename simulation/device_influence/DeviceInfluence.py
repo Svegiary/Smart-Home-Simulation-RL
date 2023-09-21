@@ -1,3 +1,4 @@
+from models.Devices.AC.ACState import ACState, OffState
 from models.Devices.StateRepresentation.StateRepresentation import RepresentState
 from models.Home.Home import Home
 from enums.Rooms import HomeRooms
@@ -16,10 +17,16 @@ class SimulationController:
     def active_ac(self):
         active_ac = 0
         for room in self.sim.home.rooms.values():
+            print(room.name)
             for key, device in room.devices.items():
+                print(device)
                 if device.device_type == DeviceType.AC:
-                    active_ac += 1
-                    self.no_of_active_ac = active_ac
+                    print("here")
+
+                    if not isinstance(device.controller.state, OffState):
+                        print("here")
+                        active_ac += 1
+                    self.active_acs = active_ac
 
     def active_lights(self):
         active_lights = 0

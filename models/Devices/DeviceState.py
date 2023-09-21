@@ -3,8 +3,8 @@ from abc import ABC, abstractmethod
 
 class DeviceState(ABC):
 
-    def __init__(self, power_consumption):
-        self.current_power = power_consumption
+    def __init__(self):
+        self.current_power = 0
 
     @abstractmethod
     def turn_off(self):

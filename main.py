@@ -52,6 +52,10 @@ print(sim.simulation_data.temp_data)
 print(sim.simulation_data.humidity_data)
 
 sc = SimulationController(sim)
-homeController.turn_on_device(HomeRooms.LIVING_ROOM, DeviceType.AC)
+sim.home.rooms[HomeRooms.LIVING_ROOM].devices[DeviceType.AC].controller.actions[1].perform_action()
+print(sim.home.rooms[HomeRooms.LIVING_ROOM]
+      .devices[DeviceType.AC].controller.state.power_consumption)
+RepresentState.print(
+    sim.home.rooms[HomeRooms.LIVING_ROOM].devices[DeviceType.AC])
 sc.active_ac()
 print(sc.active_acs)

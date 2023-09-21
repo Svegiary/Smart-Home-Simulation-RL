@@ -1,15 +1,20 @@
+from enums.DeviceType import DeviceType
+from enums.Rooms import HomeRooms
 from factory.HomeFactory.HomeFactory import HomeFactory
 from models.Devices.LightBulb.LightBulb import LightBulb
 from models.Devices.LightBulb.LightBulbSubscriber import LightBulbSubscriber
+from models.Home.HomeController import HomeController
 from models.Home.HomeRepresentation.PrintHome import PrintHome
 from models.Sensors.MotionSensor.MotionSensor import MotionSensor
 from models.Devices.StateRepresentation.StateRepresentation import RepresentState
 from models.Sensors.RepresentSensor import RepresentSensor
 from simulation.Simulation import Simulation
 from simulation.config.simulation_config import SimulationConfig
+from simulation.data_generation.data_factories.humidity_factory import HumidityFactory
 from simulation.data_generation.data_factories.temperature_factory import TemperatureFactory
 from simulation.data_generation.simulation_data_factory import SimulationDataFactory
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
+from simulation.device_influence.DeviceInfluence import SimulationController
 from simulation.simulation_factory.simulation_factory import SimulationFactory
 
 
@@ -31,12 +36,22 @@ config.set_simulation_params(simulation_params)
 
 timestamps = TimestampGeneration(config)
 temp_factory = TemperatureFactory(config, timestamps)
-humidity_factory = 0  # TODO:implement
+humidity_factory = HumidityFactory(config, timestamps)
 sunlight_factory = 0  # TODO:implement
 
 data = SimulationDataFactory.create_simulation_data(
     temp_factory, humidity_factory, sunlight_factory)
 
-sim = Simulation(timestamps, data)
+home = HomeFactory().create_home()
+homeController = HomeController(home)
+
+
+sim = Simulation(timestamps, data, home, 0)
 
 print(sim.simulation_data.temp_data)
+print(sim.simulation_data.humidity_data)
+
+sc = SimulationController(sim)
+homeController.turn_on_device(HomeRooms.LIVING_ROOM, DeviceType.AC)
+sc.active_ac()
+print(sc.active_acs)

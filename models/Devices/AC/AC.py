@@ -4,9 +4,8 @@ from models.Devices.Device import Device
 
 class AirConditioner(Device):
 
-    def __init__(self, name, controller):
-        self.controller = controller
-        super().__init__(name, controller,  DeviceType.AC)
+    def __init__(self, name, controller, power_consumption):
+        super().__init__(name, controller,  DeviceType.AC, power_consumption)
 
     def turn_on(self):
         self.controller.turn_on()

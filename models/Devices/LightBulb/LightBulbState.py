@@ -41,8 +41,8 @@ class OnState(LightBulbState):
     def __init__(self):
         color_temp = 6000
         brightness = 100
-        power_consumption = 10
-        super().__init__(power_consumption, brightness, color_temp)
+
+        super().__init__(self.current_power, brightness, color_temp)
 
     def turn_on(self) -> LightBulbState:
         print("The light bulb is on")

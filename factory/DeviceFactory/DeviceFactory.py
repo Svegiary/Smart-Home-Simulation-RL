@@ -8,8 +8,8 @@ from models.Devices.AC.AC import AirConditioner
 class DeviceFactory:
 
     @staticmethod
-    def create_device(device_type, name):
+    def create_device(device_type, name, power_consumption):
         if device_type == DeviceType.LIGHT:
-            return LightBulb(name, LightBulbController())
+            return LightBulb(name, LightBulbController(), power_consumption)
         if device_type == DeviceType.AC:
-            return AirConditioner(name, AcController())
+            return AirConditioner(name, AcController(), power_consumption)

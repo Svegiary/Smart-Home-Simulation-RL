@@ -9,6 +9,11 @@ class AcController(DeviceController):
     def _setState(self, state):
         self._state = state
 
+    def turn_on(self):
+        self._state.set_heating()
+        self._setState(HeatingState())
+        return self.state
+
     def turn_off(self):
         self._state.turn_off()
         self._setState(OffState())

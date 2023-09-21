@@ -7,13 +7,14 @@ from simulation.data_generation.timestamp_generation.timestamp import TimestampG
 class Simulation:
     def __init__(
             self, timestamps: TimestampGeneration,
-            simulation_data: SimulationData,
+            simulation_data:  SimulationData,
             home: Home,
             homeController: HomeController,
     ):
         self.timestamps = timestamps.timestamps
         self.simulation_data = simulation_data
         self.home = home
+        self.homeController = homeController
 
 
 # simulation has states .

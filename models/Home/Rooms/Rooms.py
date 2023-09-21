@@ -17,6 +17,7 @@ class Room():
         self.name = name
         self.devices: Dict[DeviceType, Device] = {
         }
+
         self.sensors = []  # TODO: implement sensor abstract class
         self.is_human_inside = False
 

@@ -7,12 +7,8 @@ from models.Devices.DeviceState import DeviceState
 
 class Device(ABC):
 
-    def __init__(self, name, controller: DeviceController, device_type: DeviceType, power_consumption):
+    def __init__(self, name, device_type: DeviceType, power_consumption, state: DeviceState):
         self.name = name
-        self.controller: DeviceController = controller
         self.device_type: DeviceType = device_type
         self.power_consumption = power_consumption
-
-    @abstractmethod
-    def state(self) -> DeviceState:
-        pass
+        self.state = state

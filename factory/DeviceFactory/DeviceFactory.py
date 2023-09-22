@@ -10,6 +10,6 @@ class DeviceFactory:
     @staticmethod
     def create_device(device_type, name, power_consumption):
         if device_type == DeviceType.LIGHT:
-            return LightBulb(name, LightBulbController(), power_consumption)
+            return LightBulb(name, power_consumption)
         if device_type == DeviceType.AC:
-            return AirConditioner(name, AcController(), power_consumption)
+            return AirConditioner(name, power_consumption)

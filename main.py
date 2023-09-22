@@ -1,9 +1,9 @@
 from enums.DeviceType import DeviceType
 from enums.Rooms import HomeRooms
 from factory.HomeFactory.HomeFactory import HomeFactory
+from models.Devices.Command.ACCommands import *
+from models.Devices.Command.Invoker import Invoker
 from models.Devices.LightBulb.LightBulb import LightBulb
-from models.Devices.LightBulb.LightBulbSubscriber import LightBulbSubscriber
-from models.Home.HomeController import HomeController
 from models.Home.HomeRepresentation.PrintHome import PrintHome
 from models.Sensors.MotionSensor.MotionSensor import MotionSensor
 from models.Devices.StateRepresentation.StateRepresentation import RepresentState
@@ -14,9 +14,7 @@ from simulation.data_generation.data_factories.humidity_factory import HumidityF
 from simulation.data_generation.data_factories.temperature_factory import TemperatureFactory
 from simulation.data_generation.simulation_data_factory import SimulationDataFactory
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
-from simulation.device_influence.DeviceInfluence import SimulationController
-from simulation.simulation_factory.simulation_factory import SimulationFactory
-
+from simulation.SimulationRuntime import *
 
 config = SimulationConfig()
 constraints = {
@@ -35,6 +33,7 @@ simulation_params = {
 config.set_simulation_params(simulation_params)
 
 timestamps = TimestampGeneration(config)
+timestamps.generate_timestamps()
 temp_factory = TemperatureFactory(config, timestamps)
 humidity_factory = HumidityFactory(config, timestamps)
 sunlight_factory = 0  # TODO:implement
@@ -43,12 +42,13 @@ data = SimulationDataFactory.create_simulation_data(
     temp_factory, humidity_factory, sunlight_factory)
 
 home = HomeFactory().create_home()
-homeController = HomeController(home)
 
 PrintHome.print(home)
-sim = Simulation(timestamps, data, home, 0)
+sim = Simulation(timestamps, data, home)
+print("setting runtime")
 
-print(sim.simulation_data.temp_data)
-print(sim.simulation_data.humidity_data)
-
-sc = SimulationController(sim)
+sim.set_runtime_plan(CallToActionRuntime())
+print(timestamps)
+print("starting runtime //////////////////////////////////////////////////////////////////////////////////")
+sim.start()
+print("finished runtime //////////////////////////////////////////////////////////////////////////////////")

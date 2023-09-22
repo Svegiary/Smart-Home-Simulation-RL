@@ -6,7 +6,7 @@ from enums.DeviceType import DeviceType
 from simulation.Simulation import Simulation
 
 
-class SimulationController:
+class DeviceInfluence:
 
     def __init__(self, sim:  Simulation):
         self.sim = sim
@@ -23,7 +23,7 @@ class SimulationController:
                 if device.device_type == DeviceType.AC:
                     print("here")
 
-                    if not isinstance(device.controller.state, OffState):
+                    if not isinstance(device.state, OffState):
                         print("here")
                         active_ac += 1
                     self.active_acs = active_ac

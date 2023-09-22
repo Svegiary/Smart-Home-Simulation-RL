@@ -10,12 +10,10 @@ class TemperatureFactory(DataFactory):
         super().__init__(config, timestamps)
 
     def generateData(self):
-
         starting_timestamp = self.current_time
         ending_timestamp = self.end_time
-        while starting_timestamp < ending_timestamp:
-            timestamp = starting_timestamp
+        for timestamp in self.timestamps.timestamps:
+            starting_timestamp = timestamp
             value = TemperatureCalculation.generate_temperature(
                 starting_timestamp, self.config.simulation_duration, self.config)
             self.data[timestamp] = value
-            starting_timestamp += self.config.time_interval * 60

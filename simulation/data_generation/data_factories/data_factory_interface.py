@@ -9,6 +9,7 @@ class DataFactory(ABC):
         self.config = config
         self.current_time = timestamps.current_time
         self.end_time = timestamps.end_time
+        self.timestamps = timestamps
         self.data = {}
 
     @abstractmethod

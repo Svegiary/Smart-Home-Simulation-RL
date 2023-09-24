@@ -19,7 +19,7 @@ class Simulation:
         self.simulation_data = simulation_data
         self.home = home
         self.simulation_runtime_plan = NoRuntime()
-        self.simulation_controller = 0
+        self.controller = controller
 
     def set_runtime_plan(self, runtime_plan: SimulationRuntime):
         self.simulation_runtime_plan = runtime_plan

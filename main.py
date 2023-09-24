@@ -59,7 +59,7 @@ sim = Simulation(
                          ))
 print("setting runtime")
 
-sim.set_runtime_plan(CallToActionRuntime())
+sim.set_runtime_plan(ControllerAcRuntime())
 print(timestamps)
 print("starting runtime //////////////////////////////////////////////////////////////////////////////////")
 sim.start()

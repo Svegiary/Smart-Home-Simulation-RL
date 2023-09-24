@@ -42,21 +42,28 @@ class ControllerAcRuntime(SimulationRuntime):
         for timestamp in sim.timestamps:
             snapshot = sim.extract_snapshot(timestamp)
             self.snapshots.append(snapshot)
+            snapshot.print()
             print("Actions")
             print("1) Set cooling")
             print("2) Set Heating")
             print("3) Turn off")
             while True:
                 command = input("Option:")
-                if command == 1:
+                if command == "1":
+
                     sim.controller.set_cooling()
                     break
-                elif command == 2:
+                elif command == "2":
+
                     sim.controller.set_heating()
                     break
-                elif command == 3:
+                elif command == "3":
                     sim.controller.turn_off()
+                    break
+                elif command == "4":
+                    print("doing nothing")
                     break
                 else:
                     print("invalid action")
                     continue
+            print("------------------------------------")

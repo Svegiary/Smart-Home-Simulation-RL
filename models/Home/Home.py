@@ -13,6 +13,7 @@ class Home:
         self.house_temp = 0
         self.house_light = 0
         self.house_humidity = 0
+        self.get_current_temp = 0
         # TODO: noise level
 
     def __getitem__(self, room):

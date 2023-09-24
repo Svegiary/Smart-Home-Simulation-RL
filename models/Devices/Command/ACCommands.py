@@ -19,7 +19,7 @@ class ACSetHeatingCommand(DeviceCommand):
         self.ac.set_heating()
 
 
-class ACTurnOff(DeviceCommand):
+class ACTurnOffCommand(DeviceCommand):
     def __init__(self, ac: AirConditioner):
         self.ac = ac
 

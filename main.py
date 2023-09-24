@@ -1,5 +1,6 @@
 from enums.DeviceType import DeviceType
 from enums.Rooms import HomeRooms
+from factory.CommandFactory.CommandFactory import CommandFactory
 from factory.HomeFactory.HomeFactory import HomeFactory
 from models.Devices.Command.ACCommands import *
 from models.Devices.Command.Invoker import Invoker
@@ -9,6 +10,7 @@ from models.Sensors.MotionSensor.MotionSensor import MotionSensor
 from models.Devices.StateRepresentation.StateRepresentation import RepresentState
 from models.Sensors.RepresentSensor import RepresentSensor
 from simulation.Simulation import Simulation
+from simulation.SimulationController import SimulationController
 from simulation.config.simulation_config import SimulationConfig
 from simulation.data_generation.data_factories.humidity_factory import HumidityFactory
 from simulation.data_generation.data_factories.temperature_factory import TemperatureFactory
@@ -44,7 +46,17 @@ data = SimulationDataFactory.create_simulation_data(
 home = HomeFactory().create_home()
 
 PrintHome.print(home)
-sim = Simulation(timestamps, data, home)
+command_Factory = CommandFactory(home)
+command_Factory.create_commands()
+print(command_Factory.commands)
+
+sim = Simulation(
+    timestamps,
+    data,
+    home,
+    SimulationController(command_Factory.commands,
+                         Invoker()
+                         ))
 print("setting runtime")
 
 sim.set_runtime_plan(CallToActionRuntime())

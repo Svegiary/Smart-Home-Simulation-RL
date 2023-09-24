@@ -1,0 +1,14 @@
+from models.Devices.AC.AC import AirConditioner
+from models.Devices.Command.ACCommands import *
+
+
+class ACCommandFactory:
+
+    def __init__(self, ac: AirConditioner):
+        self.ac = ac
+        self.commands = []
+
+    def create_commands(self):
+        self.commands.append(ACSetCoolingCommand(self.ac))
+        self.commands.append(ACSetHeatingCommand(self.ac))
+        self.commands.append(ACTurnOffCommand(self.ac))

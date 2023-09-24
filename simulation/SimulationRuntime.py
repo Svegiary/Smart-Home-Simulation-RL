@@ -1,5 +1,6 @@
 from abc import abstractmethod, ABC
 from time import sleep
+from models.Devices.Command.Invoker import Invoker
 
 from simulation.SimulationSnapshot import SimulationSnapshot
 
@@ -7,6 +8,7 @@ from simulation.SimulationSnapshot import SimulationSnapshot
 class SimulationRuntime(ABC):
     def __init__(self):
         self.snapshots: list[SimulationSnapshot] = []
+        self.invoker = Invoker()  # TODO: hell no
 
     @abstractmethod
     def start(self, sim):
@@ -28,10 +30,33 @@ class DefaultRuntime(SimulationRuntime):
 class CallToActionRuntime(SimulationRuntime):
     def start(self, sim):
         for timestamp in sim.timestamps:
-            print(timestamp)
-            print(sim.simulation_data.temp_data)
             snapshot = sim.extract_snapshot(timestamp)
             self.snapshots.append(snapshot)
-            print(vars(snapshot))
+            snapshot.print()
             execute = input("Choose Action")
             sleep(0.1)
+
+
+class ControllerAcRuntime(SimulationRuntime):
+    def start(self, sim):
+        for timestamp in sim.timestamps:
+            snapshot = sim.extract_snapshot(timestamp)
+            self.snapshots.append(snapshot)
+            print("Actions")
+            print("1) Set cooling")
+            print("2) Set Heating")
+            print("3) Turn off")
+            while True:
+                command = input("Option:")
+                if command == 1:
+                    sim.controller.set_cooling()
+                    break
+                elif command == 2:
+                    sim.controller.set_heating()
+                    break
+                elif command == 3:
+                    sim.controller.turn_off()
+                    break
+                else:
+                    print("invalid action")
+                    continue

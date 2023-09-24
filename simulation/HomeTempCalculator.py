@@ -30,12 +30,12 @@ class HomeTempCalculator:
                 if isinstance(ac.state, HeatingState):
                     new_temp = self.outside_temp_infulence(
                         self.home.house_temp, outside_temp)
-                    self.home.set_house_temp(new_temp + 2)
+                    self.home.set_house_temp(new_temp + 3)
                     return self.home.house_temp
                 elif isinstance(ac.state, CoolingState):
                     new_temp = self.outside_temp_infulence(
                         self.home.house_temp, outside_temp)
-                    self.home.set_house_temp(new_temp - 2)
+                    self.home.set_house_temp(new_temp - 3)
                     return self.home.house_temp
 
             self.home.set_house_temp(self.outside_temp_infulence(

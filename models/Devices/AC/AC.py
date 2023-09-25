@@ -1,6 +1,5 @@
 from enums.DeviceType import DeviceType
 from models.Devices.AC.ACState import *
-from models.Devices.AC.AC_Controller import AcController
 from models.Devices.Device import Device
 
 

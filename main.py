@@ -4,11 +4,7 @@ from factory.CommandFactory.CommandFactory import CommandFactory
 from factory.HomeFactory.HomeFactory import HomeFactory
 from models.Devices.Command.ACCommands import *
 from models.Devices.Command.Invoker import Invoker
-from models.Devices.LightBulb.LightBulb import LightBulb
-from models.Home.HomeRepresentation.PrintHome import PrintHome
-from models.Sensors.MotionSensor.MotionSensor import MotionSensor
-from models.Devices.StateRepresentation.StateRepresentation import RepresentState
-from models.Sensors.RepresentSensor import RepresentSensor
+from representation.HomeRepresentation.PrintHome import PrintHome
 from simulation.Simulation import Simulation
 from simulation.SimulationController import SimulationController
 from simulation.config.simulation_config import SimulationConfig

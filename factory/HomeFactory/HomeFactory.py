@@ -1,6 +1,5 @@
 from factory.DeviceFactory.DeviceFactory import DeviceFactory
 from enums.Rooms import HomeRooms
-from models.Devices.LightBulb.LightBulb import LightBulb
 from models.Home.Home import Home
 from models.Home.Rooms.Rooms import Room
 from models.Sensors.MotionSensor.MotionSensor import MotionSensor

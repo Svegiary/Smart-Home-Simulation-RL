@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from enums.DeviceType import DeviceType
 
-from models.Devices.DeviceController import DeviceController
 from models.Devices.DeviceState import DeviceState
 
 

@@ -1,8 +1,8 @@
 from typing import Dict, List
 
-from models.Devices.StateRepresentation.StateRepresentation import RepresentState
 from models.Devices.Device import Device
 from enums.DeviceType import DeviceType
+from representation.StateRepresentation.StateRepresentation import RepresentState
 
 
 class PrintDevices:

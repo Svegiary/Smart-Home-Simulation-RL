@@ -4,7 +4,6 @@ from typing import Dict
 
 from enums.Rooms import HomeRooms
 
-from models.Devices.StateRepresentation.StateRepresentation import RepresentState
 
 from models.Devices.Device import Device
 from models.Sensors.Sensor import Sensor
@@ -33,11 +32,3 @@ class Room():
 
     def detach_sensor(self, sensor: Sensor):
         return self.sensors.remove(sensor)
-
-    def print_devices_and_state(self):
-        for device in self.devices:
-            RepresentState.print(device)
-
-    def print_sensors(self):
-        for sensor in self.sensors:
-            print(sensor)

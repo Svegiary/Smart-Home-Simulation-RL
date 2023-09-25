@@ -1,5 +1,5 @@
 from models.Devices.AC.AC import AirConditioner
-from models.Devices.Command.ACCommands import *
+from models.Command.ACCommands import *
 
 
 class ACCommandFactory:

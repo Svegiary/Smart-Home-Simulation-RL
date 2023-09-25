@@ -1,7 +1,7 @@
 from enums.DeviceType import DeviceType
 from factory.CommandFactory.ACCommandFactory import ACCommandFactory
 from factory.CommandFactory.LightBulbCommandFactory import LightBulbCommandFactory
-from models.Devices.Command.DeviceCommand import DeviceCommand
+from models.Command.DeviceCommand import DeviceCommand
 from models.Home.Home import Home
 
 

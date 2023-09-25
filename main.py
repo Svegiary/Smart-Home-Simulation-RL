@@ -2,8 +2,8 @@ from enums.DeviceType import DeviceType
 from enums.Rooms import HomeRooms
 from factory.CommandFactory.CommandFactory import CommandFactory
 from factory.HomeFactory.HomeFactory import HomeFactory
-from models.Devices.Command.ACCommands import *
-from models.Devices.Command.Invoker import Invoker
+from models.Command.ACCommands import *
+from models.Command.Invoker import Invoker
 from representation.HomeRepresentation.PrintHome import PrintHome
 from simulation.Simulation import Simulation
 from simulation.SimulationController import SimulationController

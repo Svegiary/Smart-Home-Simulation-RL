@@ -1,4 +1,4 @@
-from models.Devices.Command.DeviceCommand import DeviceCommand
+from models.Command.DeviceCommand import DeviceCommand
 from models.Devices.LightBulb.LightBulb import LightBulb
 
 

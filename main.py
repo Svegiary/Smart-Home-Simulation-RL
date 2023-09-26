@@ -44,7 +44,6 @@ home = HomeFactory().create_home()
 PrintHome.print(home)
 command_Factory = CommandFactory(home)
 command_Factory.create_commands()
-print(command_Factory.commands)
 
 sim = Simulation(
     timestamps,
@@ -55,7 +54,7 @@ sim = Simulation(
                          ))
 print("setting runtime")
 
-sim.set_runtime_plan(ControllerAcRuntime())
+sim.set_runtime_plan(ControllerDehumidifierRuntime())
 print(timestamps)
 print("starting runtime //////////////////////////////////////////////////////////////////////////////////")
 sim.start()

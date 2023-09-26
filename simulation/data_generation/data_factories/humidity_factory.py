@@ -10,10 +10,10 @@ class HumidityFactory(DataFactory):
 
     def generateData(self):
 
-        current_timestam = self.current_time
+        current_timestamp = self.current_time
         ending_timestamp = self.end_time
         for timestamp in self.timestamps.timestamps:
             current_timestamp = timestamp
             value = HumidityCalculation.generate_humidity(
-                current_timestam, self.config.simulation_duration, self.config)
+                current_timestamp, self.config.simulation_duration, self.config)
             self.data[timestamp] = value

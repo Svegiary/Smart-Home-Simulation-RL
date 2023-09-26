@@ -18,6 +18,7 @@ class HomeDeviceSnapshot:
         self.home = home
         self.active_acs = []
         self.active_lights = []
+        self.active_dehumidifers = []
         self.current_power_consumption = 0
 
     def active_ac(self):
@@ -35,3 +36,11 @@ class HomeDeviceSnapshot:
                 if device.device_type == DeviceType.LIGHT:
                     active_lights += 1
         self.active_lights = active_lights
+
+    def count_dehumidifers(self):
+        active_dehumidiers = []
+        for room in self.home.rooms.values():
+            for key, device in room.devices.items():
+                if device.device_type == DeviceType.DEHUMIDIFIER:
+                    active_dehumidiers.append(device)
+        self.active_dehumidifers = active_dehumidiers

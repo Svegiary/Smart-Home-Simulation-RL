@@ -25,4 +25,4 @@ class AirConditioner(Device):
 
     @property
     def current_power(self):
-        return self.state.power_consumption()
+        return self.state.power_consumption

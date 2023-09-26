@@ -1,5 +1,5 @@
 from models.Home.Home import Home
-from simulation.HomeTempCalculator import HomeTempCalculator
+from simulation.SnapshotDataCalculator import SnapshotDataCalculator
 from simulation.SimulationController import SimulationController
 from simulation.data_generation.simulation_data import SimulationData
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
@@ -28,11 +28,11 @@ class Simulation:
         self.simulation_runtime_plan.start(self)
 
     def extract_snapshot(self, timestamp):
-
+        print(self.simulation_data.humidity_data)
         return SimulationSnapshot(
-            self.home.house_temp,
             self.simulation_data.temp_data[timestamp],
-            HomeTempCalculator(HomeDeviceSnapshot(self.home))
+            self.simulation_data.humidity_data[timestamp],
+            SnapshotDataCalculator(HomeDeviceSnapshot(self.home))
 
         )
 

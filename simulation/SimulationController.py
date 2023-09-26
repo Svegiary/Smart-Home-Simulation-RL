@@ -1,4 +1,6 @@
+from factory.CommandFactory.DehumidifierCommandFactory import DehumidifierCommandFactory
 from models.Command.ACCommands import *
+from models.Command.DehumidifierCommands import TurnOffDehumidifier, TurnOnDehumidifier
 from models.Command.DeviceCommand import DeviceCommand
 from models.Command.Invoker import Invoker
 
@@ -18,9 +20,19 @@ class SimulationController:
             if isinstance(command, ACSetCoolingCommand):
                 self.execute(command)
 
-    def turn_off(self):
+    def turn_off_ac(self):
         for command in self.commands:
             if isinstance(command, ACTurnOffCommand):
+                self.execute(command)
+
+    def turn_on_dehumidifier(self):
+        for command in self.commands:
+            if isinstance(command, TurnOnDehumidifier):
+                self.execute(command)
+
+    def turn_off_dehumidifier(self):
+        for command in self.commands:
+            if isinstance(command, TurnOffDehumidifier):
                 self.execute(command)
 
     def execute(self, command):

@@ -59,11 +59,40 @@ class ControllerAcRuntime(SimulationRuntime):
                     sim.controller.set_heating()
                     break
                 elif command == "3":
-                    sim.controller.turn_off()
+                    sim.controller.turn_off_ac()
                     break
                 elif command == "4":
                     print("doing nothing")
                     break
+                else:
+                    print("invalid action")
+                    continue
+            print("------------------------------------")
+
+
+class ControllerDehumidifierRuntime(SimulationRuntime):
+    def start(self, sim):
+        for timestamp in sim.timestamps:
+            snapshot = sim.extract_snapshot(timestamp)
+            self.snapshots.append(snapshot)
+            snapshot.print()
+            print("Actions")
+            print("1) Turn off")
+            print("2) Turn on")
+            print("3) Do nothing")
+            while True:
+                command = input("Option:")
+                if command == "1":
+
+                    sim.controller.turn_off_dehumidifier()
+                    break
+                elif command == "2":
+
+                    sim.controller.turn_on_dehumidifier()
+                    break
+                elif command == "3":
+                    break
+
                 else:
                     print("invalid action")
                     continue

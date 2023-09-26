@@ -17,6 +17,9 @@ class HomeFactory:
             DeviceType.AC, "Living Room AC", 2000
         )
 
+        living_room_dehumidifier = DeviceFactory.create_device(
+            DeviceType.DEHUMIDIFIER, "Living Room Dehumidifier", 500)
+
         living_room_light = DeviceFactory.create_device(
             DeviceType.LIGHT, "Living Room Light", 5)
         living_room_motion_sensor = MotionSensor("Living Room Motion Sensor")
@@ -34,6 +37,7 @@ class HomeFactory:
         bathroom_motion_sensor = MotionSensor("Bathroom Motion Sensor")
 
         living_room.attach_device(living_room_light)
+        living_room.attach_device(living_room_dehumidifier)
         living_room.attach_device(living_room_ac)
         living_room.attach_sensor(living_room_motion_sensor)
 

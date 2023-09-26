@@ -1,5 +1,6 @@
 from abc import abstractmethod, ABC
 from time import sleep
+from enums.Rooms import HomeRooms
 from models.Command.Invoker import Invoker
 
 from simulation.SimulationSnapshot import SimulationSnapshot
@@ -93,6 +94,40 @@ class ControllerDehumidifierRuntime(SimulationRuntime):
                 elif command == "3":
                     break
 
+                else:
+                    print("invalid action")
+                    continue
+            print("------------------------------------")
+
+
+class HumanMovementRuntime(SimulationRuntime):
+    def start(self, sim):
+        for timestamp in sim.timestamps:
+            snapshot = sim.extract_snapshot(timestamp)
+            self.snapshots.append(snapshot)
+            snapshot.print()
+            print("Actions")
+            print("1) Move human to living room")
+            print("2) Move human to bedroom")
+            print("3) Move human to bathroom")
+            print("4) Move human to kitchen")
+            print("5) Dont move")
+            while True:
+                command = input("Option:")
+                if command == "1":
+
+                    sim.home.place_human(HomeRooms.LIVING_ROOM)
+                    break
+                elif command == "2":
+
+                    sim.home.place_human(HomeRooms.BEDROOM)
+                    break
+                elif command == "3":
+                    sim.home.place_human(HomeRooms.BATHROOM)
+                    break
+                elif command == "4":
+                    sim.home.place_human(HomeRooms.KITCHEN)
+                    break
                 else:
                     print("invalid action")
                     continue

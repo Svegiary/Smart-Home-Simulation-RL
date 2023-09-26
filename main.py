@@ -13,6 +13,7 @@ from simulation.data_generation.data_factories.temperature_factory import Temper
 from simulation.data_generation.simulation_data_factory import SimulationDataFactory
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
 from simulation.SimulationRuntime import *
+from simulation.human.Human import Human
 
 config = SimulationConfig()
 constraints = {
@@ -45,16 +46,20 @@ PrintHome.print(home)
 command_Factory = CommandFactory(home)
 command_Factory.create_commands()
 
+home.place_human(HomeRooms.LIVING_ROOM)
+
 sim = Simulation(
     timestamps,
     data,
     home,
     SimulationController(command_Factory.commands,
                          Invoker()
-                         ))
+                         ),
+    config
+)
 print("setting runtime")
 
-sim.set_runtime_plan(ControllerDehumidifierRuntime())
+sim.set_runtime_plan(HumanMovementRuntime())
 print(timestamps)
 print("starting runtime //////////////////////////////////////////////////////////////////////////////////")
 sim.start()

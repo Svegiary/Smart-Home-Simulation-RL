@@ -32,3 +32,9 @@ class Room():
 
     def detach_sensor(self, sensor: Sensor):
         return self.sensors.remove(sensor)
+
+    def place_human(self):
+        self.is_human_inside = True
+
+    def remove_human(self):
+        self.is_human_inside = False

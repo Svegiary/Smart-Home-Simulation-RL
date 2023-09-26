@@ -34,6 +34,7 @@ class Simulation:
         return SimulationSnapshot(
             self.simulation_data.temp_data[timestamp],
             self.simulation_data.humidity_data[timestamp],
+            self.home.human,
             SnapshotDataCalculator(HomeDeviceSnapshot(self.home))
 
         )

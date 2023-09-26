@@ -5,6 +5,7 @@ from enums.Rooms import HomeRooms
 
 from models.Devices.Device import Device
 from models.Home.Rooms.Rooms import Room
+from simulation.human.Human import Human
 
 
 class Home:
@@ -13,7 +14,7 @@ class Home:
         self.house_temp = 0
         self.house_light = 0
         self.house_humidity = 0
-        self.get_current_temp = 0
+        self.human = Human()
         # TODO: noise level
 
     def __getitem__(self, room):
@@ -30,3 +31,7 @@ class Home:
     # Setter for house_humidity
     def set_house_humidity(self, humidity):
         self.house_humidity = humidity
+
+    def place_human(self, room: HomeRooms):
+
+        self.human.place_human(self.rooms[room])

@@ -14,8 +14,8 @@ class HumidityCalculation:
                 ((index / (no_timestamps // 2)) *
                  (config.max_humidity - config.min_humidity))
         else:
-            humidity = config.max_humidity - \
-                (((index / (no_timestamps))) *
+            humidity = 2*config.max_humidity - \
+                (((index / (no_timestamps / 2))) *
                  (config.max_humidity - config.min_humidity))
 
         return round(humidity, 1)

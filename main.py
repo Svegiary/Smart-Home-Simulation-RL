@@ -65,7 +65,7 @@ sim = Simulation(
 )
 print("setting runtime")
 
-sim.set_runtime_plan(HumanMovementRuntime())
+sim.set_runtime_plan(DefaultRuntime())
 print(timestamps)
 print("starting runtime //////////////////////////////////////////////////////////////////////////////////")
 sim.start()

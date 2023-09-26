@@ -24,7 +24,9 @@ class NoRuntime(SimulationRuntime):
 class DefaultRuntime(SimulationRuntime):
     def start(self, sim):
         for timestamp in sim.timestamps:
-            print(timestamp)
+            snapshot = sim.extract_snapshot(timestamp)
+            self.snapshots.append(snapshot)
+            snapshot.print()
             sleep(0.1)
 
 
@@ -127,6 +129,8 @@ class HumanMovementRuntime(SimulationRuntime):
                     break
                 elif command == "4":
                     sim.home.place_human(HomeRooms.KITCHEN)
+                    break
+                elif command == "5":
                     break
                 else:
                     print("invalid action")

@@ -3,10 +3,8 @@ from simulation.config.simulation_config import SimulationConfig
 
 class SunlightCalculation:
     @staticmethod
-    def generate_sunlight(index, timestamp, duration_hours, config: SimulationConfig):
-        half_duration = duration_hours // 2
-        current_hour = (timestamp % 86400) / 3600
-        print(current_hour)
+    def generate_sunlight(index, duration_hours, config: SimulationConfig):
+
         no_timestamps = duration_hours / (config.time_interval / 60)
         print("STEPS ", no_timestamps)
         if index < no_timestamps // 2:

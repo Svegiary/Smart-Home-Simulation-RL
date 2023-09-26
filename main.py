@@ -44,6 +44,7 @@ data = SimulationDataFactory.create_simulation_data(
 
 print(data.temp_data)
 print(data.sunlight_data)
+print(data.humidity_data)
 
 home = HomeFactory().create_home()
 

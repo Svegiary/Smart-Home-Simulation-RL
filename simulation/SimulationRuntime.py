@@ -47,6 +47,7 @@ class ControllerAcRuntime(SimulationRuntime):
             print("1) Set cooling")
             print("2) Set Heating")
             print("3) Turn off")
+            print("4) Do nothing")
             while True:
                 command = input("Option:")
                 if command == "1":

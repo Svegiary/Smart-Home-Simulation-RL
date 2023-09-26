@@ -1,7 +1,6 @@
 from models.Command.ACCommands import *
 from models.Command.DeviceCommand import DeviceCommand
 from models.Command.Invoker import Invoker
-from simulation.device_influence.DeviceInfluence import DeviceInfluence
 
 
 class SimulationController:

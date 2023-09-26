@@ -4,7 +4,7 @@ from simulation.SimulationController import SimulationController
 from simulation.data_generation.simulation_data import SimulationData
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
 from simulation.SimulationRuntime import *
-from simulation.device_influence.DeviceInfluence import DeviceInfluence
+from simulation.home_devices_snapshot.HomeDeviceSnapshot import HomeDeviceSnapshot
 
 
 class Simulation:
@@ -32,7 +32,7 @@ class Simulation:
         return SimulationSnapshot(
             self.home.house_temp,
             self.simulation_data.temp_data[timestamp],
-            HomeTempCalculator(DeviceInfluence(self.home))
+            HomeTempCalculator(HomeDeviceSnapshot(self.home))
 
         )
 

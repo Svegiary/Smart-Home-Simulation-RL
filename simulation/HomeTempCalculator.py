@@ -1,10 +1,10 @@
 from models.Devices.AC.ACState import CoolingState, HeatingState
 from models.Home.Home import Home
-from simulation.device_influence.DeviceInfluence import DeviceInfluence
+from simulation.home_devices_snapshot.HomeDeviceSnapshot import HomeDeviceSnapshot
 
 
 class HomeTempCalculator:
-    def __init__(self, device_influence: DeviceInfluence) -> None:
+    def __init__(self, device_influence: HomeDeviceSnapshot) -> None:
         self.home = device_influence.home
         self.device_influence = device_influence
 

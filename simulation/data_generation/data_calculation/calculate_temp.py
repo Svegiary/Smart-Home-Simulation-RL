@@ -8,6 +8,7 @@ class TemperatureCalculation:
     def generate_temperature(timestamp, duration_hours, config: SimulationConfig):
         half_duration = duration_hours // 2
         current_hour = (timestamp % 86400) / 3600
+        print("TEMP CURRENT HOUR ", current_hour)
 
         if current_hour < half_duration:
             temperature = config.max_temp - \

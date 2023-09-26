@@ -9,6 +9,7 @@ from simulation.Simulation import Simulation
 from simulation.SimulationController import SimulationController
 from simulation.config.simulation_config import SimulationConfig
 from simulation.data_generation.data_factories.humidity_factory import HumidityFactory
+from simulation.data_generation.data_factories.sunlight_factory import SunlightFactory
 from simulation.data_generation.data_factories.temperature_factory import TemperatureFactory
 from simulation.data_generation.simulation_data_factory import SimulationDataFactory
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
@@ -26,19 +27,23 @@ constraints = {
 config.set_constraints(constraints)
 
 simulation_params = {
-    "time_interval": 10,
+    "time_interval": 10,  # minutes
     "simulation_duration": 24
 }
 config.set_simulation_params(simulation_params)
 
 timestamps = TimestampGeneration(config)
 timestamps.generate_timestamps()
+
 temp_factory = TemperatureFactory(config, timestamps)
 humidity_factory = HumidityFactory(config, timestamps)
-sunlight_factory = 0  # TODO:implement
+sunlight_factory = SunlightFactory(config, timestamps)
 
 data = SimulationDataFactory.create_simulation_data(
     temp_factory, humidity_factory, sunlight_factory)
+
+print(data.temp_data)
+print(data.sunlight_data)
 
 home = HomeFactory().create_home()
 

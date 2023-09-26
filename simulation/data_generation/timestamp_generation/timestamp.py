@@ -22,4 +22,4 @@ class TimestampGeneration:
         end_time = self.end_time
         while starting_time < end_time:
             self.timestamps.append(starting_time)
-            starting_time += self.config.simulation_duration * 60
+            starting_time += self.config.time_interval * 60

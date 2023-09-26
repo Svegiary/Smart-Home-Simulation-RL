@@ -14,7 +14,6 @@ from simulation.data_generation.data_factories.temperature_factory import Temper
 from simulation.data_generation.simulation_data_factory import SimulationDataFactory
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
 from simulation.SimulationRuntime import *
-from simulation.human.Human import Human
 
 config = SimulationConfig()
 constraints = {

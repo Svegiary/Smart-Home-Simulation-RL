@@ -1,6 +1,7 @@
 from models.Home.Home import Home
 from simulation.SnapshotDataCalculator import SnapshotDataCalculator
 from simulation.SimulationController import SimulationController
+from simulation.config.simulation_config import SimulationConfig
 from simulation.data_generation.simulation_data import SimulationData
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
 from simulation.SimulationRuntime import *
@@ -13,13 +14,15 @@ class Simulation:
             timestamps: TimestampGeneration,
             simulation_data:  SimulationData,
             home: Home,
-            controller: SimulationController
+            controller: SimulationController,
+            config: SimulationConfig,
     ):
         self.timestamps = timestamps.timestamps
         self.simulation_data = simulation_data
         self.home = home
         self.simulation_runtime_plan = NoRuntime()
         self.controller = controller
+        self.config = config
 
     def set_runtime_plan(self, runtime_plan: SimulationRuntime):
         self.simulation_runtime_plan = runtime_plan
@@ -28,7 +31,6 @@ class Simulation:
         self.simulation_runtime_plan.start(self)
 
     def extract_snapshot(self, timestamp):
-        print(self.simulation_data.humidity_data)
         return SimulationSnapshot(
             self.simulation_data.temp_data[timestamp],
             self.simulation_data.humidity_data[timestamp],

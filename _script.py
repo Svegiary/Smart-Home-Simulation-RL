@@ -1,7 +1,7 @@
 import os
 
 # Specify the directory of your Python project.
-project_directory = '/'
+project_directory = '/home/harry/Documents/ai2cyber/'
 
 # Specify the output file where the concatenated content will be saved.
 output_file = 'concatenated_code.py'

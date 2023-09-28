@@ -1,3 +1,7 @@
+"""
+Factory for creating simulation data
+"""
+
 from simulation.data_generation.data_factories.humidity_factory import HumidityFactory
 from simulation.data_generation.data_factories.sunlight_factory import SunlightFactory
 from simulation.data_generation.data_factories.temperature_factory import TemperatureFactory

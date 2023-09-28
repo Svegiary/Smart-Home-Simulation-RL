@@ -1,4 +1,8 @@
+"""
+Generates data for the outside temp. The temp will first rise and then fall
+saves the data in a dict data[timestamp] = value
 
+"""
 from simulation.config.simulation_config import SimulationConfig
 from simulation.data_generation.data_calculation.calculate_temp import TemperatureCalculation
 from simulation.data_generation.data_factories.data_factory_interface import DataFactory

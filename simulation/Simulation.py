@@ -16,7 +16,7 @@ from simulation.config.simulation_config import SimulationConfig
 from simulation.data_generation.simulation_data import SimulationData
 from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
 from simulation.SimulationRuntime import *
-from simulation.home_devices_snapshot.HomeDeviceSnapshot import HomeDeviceSnapshot
+from simulation.home_devices_snapshot.home_device_snapshot import HomeDeviceSnapshot
 
 
 class Simulation:

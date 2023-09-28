@@ -1,3 +1,9 @@
+"""
+Generates data for the outside humidity. The humidity will first rise and then fall
+saves the data in a dict data[timestamp] = value
+
+"""
+
 from simulation.config.simulation_config import SimulationConfig
 from simulation.data_generation.data_calculation.calculate_humidity import HumidityCalculation
 from simulation.data_generation.data_factories.data_factory_interface import DataFactory

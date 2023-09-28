@@ -1,3 +1,6 @@
+"""
+Calculates temp data fo a given timestamp
+"""
 from simulation.config.simulation_config import SimulationConfig
 
 
@@ -5,17 +8,7 @@ class TemperatureCalculation:
 
     @staticmethod
     def generate_temperature(index: int, duration_hours: int, config: SimulationConfig) -> float:
-        """
-        Generates a temperature value based on the index of the timestamp.
 
-        Args:
-            index (int): Index of the timestamp.
-            duration_hours (int): Duration of the simulation in hours.
-            config (SimulationConfig): Configuration of the simulation.
-
-        Returns:
-            float: Temperature value.
-        """
         # Calculate the total number of timestamps in the simulation.
         no_timestamps = duration_hours / (config.time_interval / 60)
 

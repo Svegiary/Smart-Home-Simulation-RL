@@ -1,3 +1,6 @@
+"""
+Calculates sunlight data for a given timestamp
+"""
 from simulation.config.simulation_config import SimulationConfig
 
 

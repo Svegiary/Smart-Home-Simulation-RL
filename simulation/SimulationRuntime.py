@@ -1,3 +1,7 @@
+"""
+Classes for implementing simulation runtime behavior
+"""
+
 from abc import abstractmethod, ABC
 from time import sleep
 from enums.Rooms import HomeRooms
@@ -7,6 +11,8 @@ from simulation.SimulationSnapshot import SimulationSnapshot
 
 
 class SimulationRuntime(ABC):
+    """Abstract"""
+
     def __init__(self):
         self.snapshots: list[SimulationSnapshot] = []
         self.invoker = Invoker()  # TODO: hell no
@@ -17,11 +23,20 @@ class SimulationRuntime(ABC):
 
 
 class NoRuntime(SimulationRuntime):
+    """Do nothing"""
+
     def start(self, sim):
         print("Please set runtime plan")
 
 
 class DefaultRuntime(SimulationRuntime):
+    """
+    In this runtime , the console just prints 
+    the states of the house during the simulation
+    and does not support any actions , just 
+    environment influence
+    """
+
     def start(self, sim):
         for timestamp in sim.timestamps:
             snapshot = sim.extract_snapshot(timestamp)
@@ -31,7 +46,12 @@ class DefaultRuntime(SimulationRuntime):
 
 
 class CallToActionRuntime(SimulationRuntime):
-    def start(self, sim):
+    """
+    In this runtime the user will be able to control 
+    all the devices
+    """
+
+    def start(self, sim):  # TODO: implement
         for timestamp in sim.timestamps:
             snapshot = sim.extract_snapshot(timestamp)
             self.snapshots.append(snapshot)
@@ -41,6 +61,10 @@ class CallToActionRuntime(SimulationRuntime):
 
 
 class ControllerAcRuntime(SimulationRuntime):
+    """
+    In this runtime the user can control the ac
+    """
+
     def start(self, sim):
         for timestamp in sim.timestamps:
             snapshot = sim.extract_snapshot(timestamp)
@@ -74,6 +98,10 @@ class ControllerAcRuntime(SimulationRuntime):
 
 
 class ControllerDehumidifierRuntime(SimulationRuntime):
+    """
+    In this runtime the user can control the dehumidifier
+    """
+
     def start(self, sim):
         for timestamp in sim.timestamps:
             snapshot = sim.extract_snapshot(timestamp)
@@ -103,6 +131,10 @@ class ControllerDehumidifierRuntime(SimulationRuntime):
 
 
 class HumanMovementRuntime(SimulationRuntime):
+    """
+    In this runtime the user can control the human movement
+    """
+
     def start(self, sim):
         for timestamp in sim.timestamps:
             snapshot = sim.extract_snapshot(timestamp)

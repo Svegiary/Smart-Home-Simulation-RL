@@ -4,7 +4,7 @@ from factory.command_factory.command_factory import CommandFactory
 from factory.home_factory.home_factory import HomeFactory
 from models.command.ac_commands import *
 from models.command.invoker import Invoker
-from representation.HomeRepresentation.PrintHome import PrintHome
+from representation.home_representation.print_home import PrintHome
 from simulation.Simulation import Simulation
 from simulation.SimulationController import SimulationController
 from simulation.config.simulation_config import SimulationConfig

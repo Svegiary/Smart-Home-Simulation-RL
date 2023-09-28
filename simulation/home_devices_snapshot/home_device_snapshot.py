@@ -1,3 +1,7 @@
+"""
+Searches for device states that might change the simulation state
+"""
+
 from models.devices.ac.ac_state import OffState
 from models.home.home import Home
 from enums.DeviceType import DeviceType

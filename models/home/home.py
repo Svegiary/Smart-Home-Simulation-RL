@@ -11,7 +11,7 @@ from typing import Dict
 from enums.Rooms import HomeRooms
 
 from models.home.rooms.rooms import Room
-from simulation.human.Human import Human
+from simulation.human.human import Human
 
 
 class Home:

@@ -1,4 +1,6 @@
-
+"""
+Class for the human so that they can be placed in a room
+"""
 
 from models.home.rooms.rooms import Room
 

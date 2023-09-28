@@ -1,13 +1,16 @@
-from models.home.home import Home
-from representation.HomeRepresentation.PrintDevices import PrintDevices
-from representation.HomeRepresentation.PrintSensors import PrintSensors
+"""
+Simple class for representing the house. Possible 
+extension to a gui
+"""
 
-from representation.SensorRepresenation.RepresentSensor import RepresentSensor
+from models.home.home import Home
+from representation.home_representation.print_devices import PrintDevices
+from representation.home_representation.print_sensors import PrintSensors
 
 
 class PrintHome:
     @staticmethod
-    def print(home: Home):
+    def print(home: Home) -> None:
         print("###############################################################")
 
         for room_name, room_instance in home.rooms.items():

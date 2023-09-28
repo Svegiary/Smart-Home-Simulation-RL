@@ -1,3 +1,7 @@
+"""
+Singleton class for generating timestamps
+"""
+
 import time
 from simulation.config.simulation_config import SimulationConfig
 
@@ -13,9 +17,9 @@ class TimestampGeneration:
 
     def initialize(self, config: SimulationConfig):
         self.config = config
-        self.current_time = int(time.time())
-        self.end_time = self.current_time + config.simulation_duration * 3600
-        self.timestamps = []
+        self.current_time: int = int(time.time())
+        self.end_time: int = self.current_time + config.simulation_duration * 3600
+        self.timestamps: list[int] = []
 
     def generate_timestamps(self):
         starting_time = self.current_time

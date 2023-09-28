@@ -1,15 +1,18 @@
-from models.devices.device import Device
+"""
+Represent a sensor beatifully
+"""
+
 from collections import OrderedDict
+from models.Sensors.Sensor import Sensor
 
 
-class RepresentState:
+class RepresentSensor:
 
     @staticmethod
-    def print(device: Device):
+    def print(sensor: Sensor) -> None:
         ordered_attributes = OrderedDict()
-        ordered_attributes["Name"] = device.name
-        ordered_attributes["State"] = device.state
-        ordered_attributes.update(vars(device.state))
+        ordered_attributes["Name"] = sensor.name
+        ordered_attributes.update(vars(sensor))
 
         print("------------------------------")
         for attr_name, attr_value in ordered_attributes.items():

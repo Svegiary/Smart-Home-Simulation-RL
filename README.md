@@ -1,9 +1,10 @@
-## ai2cyber small project
+# ai2cyber small project
 
-### TODO:
+## Overview
 
-# 1) power consumption calculation
-# 2) noise level calculation
-# 3) simulation and home communication
-# 4) humidity and sunlight value generation
-# 5) rethink folder structure
+This is a simple Smart Home Simulation project. The implementation supports building a home that has room, 
+each room has devices and sensors and a human inside. The goal of this project is to train an ai agent
+that takes the right actions to maximize user comfort and minmize power consumption.
+
+There are external variables such as outside temp, outside humidity and sunlight that affect
+the internal measurements

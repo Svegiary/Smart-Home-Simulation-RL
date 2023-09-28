@@ -1,6 +1,5 @@
 from models.devices.ac.ac_state import CoolingState, HeatingState
 from models.devices.dehumidifier.dehumidifier_state import OffState, OnState
-from models.Home.Home import Home
 from simulation.home_devices_snapshot.HomeDeviceSnapshot import HomeDeviceSnapshot
 
 

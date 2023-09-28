@@ -25,7 +25,7 @@ from models.devices.device_state import DeviceState
 class Device(ABC):
 
     # Constructor for the Device class
-    def __init__(self, name, device_type: DeviceType, power_consumption, state: DeviceState) -> None:
+    def __init__(self, name: str, device_type: DeviceType, power_consumption: int, state: DeviceState) -> None:
         # Initialize instance variables
         self.name = name
         self.device_type: DeviceType = device_type

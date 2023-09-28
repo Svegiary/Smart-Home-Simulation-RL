@@ -1,4 +1,3 @@
-from models.Home.Rooms.Rooms import Room
 from simulation.SnapshotDataCalculator import SnapshotDataCalculator
 from simulation.human.Human import Human
 

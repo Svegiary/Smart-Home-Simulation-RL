@@ -28,7 +28,7 @@ class LightBulb(Device):
         super().__init__(name, DeviceType.LIGHT, power_consumption, OffState())
 
     # Method to turn on the LightBulb
-    def turn_on(self):
+    def turn_on(self) -> LightBulbState:
         # Call the turn_on method of the current state object
         self.state.turn_on()
         # Update the current state to OnState()
@@ -37,7 +37,7 @@ class LightBulb(Device):
         return self.state
 
     # Method to turn off the LightBulb
-    def turn_off(self):
+    def turn_off(self) -> LightBulbState:
         # Call the turn_off method of the current state object
         self.state.turn_off()
         # Update the current state to OffState()
@@ -46,7 +46,7 @@ class LightBulb(Device):
         return self.state
 
     # Method to set the brightness of the LightBulb
-    def set_brightness(self, brightness):
+    def set_brightness(self, brightness: int) -> LightBulbState:
         # Call the set_brightness method of the current state object
         self.state.set_brightness(brightness)
         # Return the new state

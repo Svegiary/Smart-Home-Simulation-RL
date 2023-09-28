@@ -19,5 +19,5 @@ class DeviceState(ABC):
         pass
 
     @abstractmethod
-    def power_consumption(self):
+    def power_consumption(self) -> int:
         pass

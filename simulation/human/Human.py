@@ -1,4 +1,6 @@
-from models.Home.Rooms.Rooms import Room
+
+
+from models.home.rooms.rooms import Room
 
 
 class Human:

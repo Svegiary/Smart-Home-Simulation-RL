@@ -22,7 +22,7 @@ class AirConditioner(Device):
 
         super().__init__(name, DeviceType.AC, power_consumption, OffState())
 
-    def set_heating(self):
+    def set_heating(self) -> ACState:
         """
         Call the corresponding function of the state
         and change the state of the device
@@ -32,16 +32,16 @@ class AirConditioner(Device):
         self.state = HeatingState()
         return self.state
 
-    def set_cooling(self):
+    def set_cooling(self) -> ACState:
         self.state.set_cooling()
         self.state = CoolingState()
         return self.state
 
-    def turn_off(self):
+    def turn_off(self) -> ACState:
         self.state.turn_off()
         self.state = OffState()
         return self.state
 
     @property
-    def current_power(self):  # TODO: implement correctly
+    def current_power(self) -> int:  # TODO: implement correctly
         return self.state.power_consumption

@@ -16,10 +16,9 @@ from models.devices.device_state import DeviceState
 class LightBulbState(DeviceState, ABC):
 
     # Constructor for the abstract LightBulbState class
-    def __init__(self, brightness, color_temp):
+    def __init__(self, brightness: int):
         super().__init__()
         self._brightness = brightness
-        self._color_temp = color_temp
 
     # Abstract method to turn on the light bulb
     @abstractmethod
@@ -31,12 +30,8 @@ class LightBulbState(DeviceState, ABC):
     def turn_off(self):
         pass
 
-    # Abstract method to set the color temperature of the light bulb
-    @abstractmethod
-    def set_color_temp(color_temp):
-        pass
-
     # Abstract method to set the brightness of the light bulb
+
     @abstractmethod
     def set_brightness(brightness):
         pass
@@ -55,11 +50,10 @@ class OnState(LightBulbState):
 
     # Constructor for the OnState class
     def __init__(self):
-        color_temp = 6000
         brightness = 100
 
         # Call the constructor of the parent class (LightBulbState) and initialize brightness and color_temp
-        super().__init__(brightness, color_temp)
+        super().__init__(brightness)
 
     # Method to turn on the light bulb
     def turn_on(self) -> LightBulbState:
@@ -69,11 +63,8 @@ class OnState(LightBulbState):
     def turn_off(self) -> LightBulbState:
         print("Turning off light bulb")
 
-    # Method to set the color temperature of the light bulb
-    def set_color_temp(self, color_temp) -> LightBulbState:
-        self._color_temp = color_temp
-
     # Method to set the brightness of the light bulb
+
     def set_brightness(self, brightness) -> LightBulbState:
         self._brightness = brightness
         self._power_consumption = 0  # Set power consumption to 0 when turned on
@@ -92,29 +83,25 @@ class OffState(LightBulbState):
 
     # Constructor for the OffState class
     def __init__(self):
-        color_temp = 0
         brightness = 0
 
         # Call the constructor of the parent class (LightBulbState) and initialize brightness and color_temp
-        super().__init__(brightness, color_temp)
+        super().__init__(brightness)
 
     # Method to turn on the light bulb
-    def turn_on(self) -> LightBulbState:
+    def turn_on(self) -> None:
         print("Turning on light bulb")
 
     # Method to turn off the light bulb
-    def turn_off(self) -> LightBulbState:
-        print("The Light Bulb is off")
-
-    # Method to set the color temperature of the light bulb
-    def set_color_temp(self, color_temp) -> LightBulbState:
+    def turn_off(self) -> None:
         print("The Light Bulb is off")
 
     # Method to set the brightness of the light bulb
-    def set_brightness(self, brightness) -> LightBulbState:
+
+    def set_brightness(self, brightness) -> None:
         print("The Light Bulb is off")
 
     # Property to get the power consumption of the light bulb when it's off (zero power consumption)
     @property
-    def power_consumption(self):
+    def power_consumption(self) -> int:
         return 0

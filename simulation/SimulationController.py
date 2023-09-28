@@ -1,8 +1,7 @@
-from factory.CommandFactory.DehumidifierCommandFactory import DehumidifierCommandFactory
-from models.Command.ACCommands import *
-from models.Command.DehumidifierCommands import TurnOffDehumidifier, TurnOnDehumidifier
-from models.Command.DeviceCommand import DeviceCommand
-from models.Command.Invoker import Invoker
+from models.command.ac_commands import *
+from models.command.dehumidifier_commands import TurnOffDehumidifier, TurnOnDehumidifier
+from models.command.device_command import DeviceCommand
+from models.command.invoker import Invoker
 
 
 class SimulationController:

@@ -1,7 +1,7 @@
 from abc import abstractmethod, ABC
 from time import sleep
 from enums.Rooms import HomeRooms
-from models.Command.Invoker import Invoker
+from models.command.invoker import Invoker
 
 from simulation.SimulationSnapshot import SimulationSnapshot
 

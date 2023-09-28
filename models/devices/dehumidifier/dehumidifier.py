@@ -11,7 +11,7 @@ Its' responsibilities:
 """
 
 
-from models.devices.dehumidifier.dehumidifier_state import OffState, OnState
+from models.devices.dehumidifier.dehumidifier_state import DehumidifierState, OffState, OnState
 from enums.DeviceType import DeviceType
 from models.devices.device import Device
 
@@ -27,7 +27,7 @@ class Dehumidifier(Device):
         super().__init__(name, DeviceType.DEHUMIDIFIER, power_consumption, OffState())
 
     # Method to turn off the Dehumidifier
-    def turn_off(self):
+    def turn_off(self) -> DehumidifierState:
         # Call the turn_off method of the current state object
         self.state.turn_off()
         # Update the current state to OffState()
@@ -36,7 +36,7 @@ class Dehumidifier(Device):
         return self.state
 
     # Method to turn on the Dehumidifier
-    def turn_on(self):
+    def turn_on(self) -> DehumidifierState:
         # Call the turn_on method of the current state object
         self.state.turn_on()
         # Update the current state to OnState()
@@ -46,6 +46,6 @@ class Dehumidifier(Device):
 
     # Property to get the current power consumption of the Dehumidifier
     @property
-    def current_power(self):
+    def current_power(self) -> int:
         # Return the power consumption of the current state
         return self.state.power_consumption

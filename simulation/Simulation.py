@@ -9,7 +9,7 @@ Its' responsbilities:
 """
 
 
-from models.Home.Home import Home
+from models.home.home import Home
 from simulation.SnapshotDataCalculator import SnapshotDataCalculator
 from simulation.SimulationController import SimulationController
 from simulation.config.simulation_config import SimulationConfig

@@ -1,4 +1,4 @@
-from models.Home.Home import Home
+from models.home.home import Home
 from representation.HomeRepresentation.PrintDevices import PrintDevices
 from representation.HomeRepresentation.PrintSensors import PrintSensors
 

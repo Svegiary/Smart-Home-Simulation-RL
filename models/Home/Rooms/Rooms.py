@@ -5,7 +5,7 @@ from typing import Dict
 from enums.Rooms import HomeRooms
 
 
-from models.Devices.Device import Device
+from models.devices.device import Device
 from models.Sensors.Sensor import Sensor
 from enums.DeviceType import DeviceType
 

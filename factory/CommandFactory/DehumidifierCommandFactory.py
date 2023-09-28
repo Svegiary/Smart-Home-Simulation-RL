@@ -1,5 +1,5 @@
 from models.Command.DehumidifierCommands import TurnOffDehumidifier, TurnOnDehumidifier
-from models.Devices.Dehumidifier.Dehumidifier import Dehumidifier
+from models.devices.dehumidifier.dehumidifier import Dehumidifier
 
 
 class DehumidifierCommandFactory:

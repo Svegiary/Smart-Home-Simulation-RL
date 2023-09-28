@@ -1,5 +1,5 @@
 from models.Command.DeviceCommand import DeviceCommand
-from models.Devices.Dehumidifier.Dehumidifier import Dehumidifier
+from models.devices.dehumidifier.dehumidifier import Dehumidifier
 
 
 class TurnOnDehumidifier(DeviceCommand):

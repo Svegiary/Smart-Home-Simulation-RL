@@ -1,6 +1,17 @@
 
+"""
+-Dehumidiertate.py
+This file containts the concrete implementation of an DehumidifierState class
+and its discrete concrete statesS
+Its' responsibilities:
+1) Implement a common interface for all Dehumidier States from the Device State class
+2) Implement concrete states of the device and their methods
+3) Calculate power consumption for each state
+"""
+
+
 from abc import ABC, abstractmethod
-from models.Devices.DeviceState import DeviceState
+from models.devices.device_state import DeviceState
 
 
 class DehumidifierState(DeviceState, ABC):

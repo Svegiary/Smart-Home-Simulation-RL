@@ -1,6 +1,4 @@
-from models.Devices.AC.AC import AirConditioner
-from models.Devices.AC.ACState import OffState
-from models.Devices.LightBulb.LightBulb import LightBulb
+from models.devices.ac.ac_state import OffState
 from models.Home.Home import Home
 from enums.DeviceType import DeviceType
 

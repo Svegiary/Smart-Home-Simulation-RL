@@ -1,7 +1,7 @@
-from models.Devices.Dehumidifier.Dehumidifier import Dehumidifier
-from models.Devices.LightBulb.LightBulb import LightBulb
+from models.devices.dehumidifier.dehumidifier import Dehumidifier
+from models.devices.light_bulb.light_bulb import LightBulb
 from enums.DeviceType import DeviceType
-from models.Devices.AC.AC import AirConditioner
+from models.devices.ac.ac import AirConditioner
 
 
 class DeviceFactory:

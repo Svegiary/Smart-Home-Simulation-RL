@@ -1,4 +1,4 @@
-from models.Devices.Device import Device
+from models.devices.device import Device
 from collections import OrderedDict
 
 

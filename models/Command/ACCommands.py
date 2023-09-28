@@ -1,6 +1,6 @@
-from models.Devices.AC.AC import AirConditioner
+
 from models.Command.DeviceCommand import DeviceCommand
-from models.Devices.Device import Device
+from models.devices.ac.ac import AirConditioner
 
 
 class ACSetCoolingCommand(DeviceCommand):

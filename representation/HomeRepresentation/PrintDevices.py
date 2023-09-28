@@ -1,6 +1,6 @@
 from typing import Dict, List
 
-from models.Devices.Device import Device
+from models.devices.device import Device
 from enums.DeviceType import DeviceType
 from representation.StateRepresentation.StateRepresentation import RepresentState
 

@@ -1,4 +1,4 @@
-from models.Devices.AC.AC import AirConditioner
+from models.devices.ac.ac import AirConditioner
 from models.Command.ACCommands import *
 
 

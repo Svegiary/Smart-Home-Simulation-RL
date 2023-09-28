@@ -1,5 +1,5 @@
 from models.Command.LightBulbCommands import *
-from models.Devices.LightBulb.LightBulb import LightBulb
+from models.devices.light_bulb.light_bulb import LightBulb
 
 
 class LightBulbCommandFactory:

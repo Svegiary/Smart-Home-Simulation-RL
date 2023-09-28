@@ -10,6 +10,6 @@ There are external variables such as outside temp, outside humidity and sunlight
 
 ## Structure
 
-# Device
+### Device
 There are 3 devices. A light , an ac and a dehumidifier. A user can control these devices in order to achieve efficiency and comfort.
 Each device has a unique influence on the simulation combined with external variables

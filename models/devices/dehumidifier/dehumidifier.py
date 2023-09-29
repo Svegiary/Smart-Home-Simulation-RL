@@ -44,8 +44,6 @@ class Dehumidifier(Device):
         # Return the new state
         return self.state
 
-    # Property to get the current power consumption of the Dehumidifier
-    @property
     def current_power(self) -> int:
         # Return the power consumption of the current state
-        return self.state.power_consumption
+        return self.state.power_consumption(self.power_consumption)

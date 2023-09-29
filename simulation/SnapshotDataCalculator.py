@@ -39,7 +39,8 @@ class TemperatureCalculator:
 
     def outside_temp_infulence(self, inside_temp, outside_temp) -> float:
         """
-        The inside and outside temp must converge
+        Calculates the influence of the outside temperature and the 
+        current inside temperature
         """
         if inside_temp > outside_temp:
             inside_temp -= round(inside_temp - outside_temp) / 2
@@ -51,7 +52,7 @@ class TemperatureCalculator:
 
     def calculate_temp(self, outside_temp) -> float:
         """
-        AC drops / raises the temp by 5c and adds up to outside influence
+        Calculates the inside temperature based on the outside temperature and the ac
         """
         if self.home.house_temp == 0:  # if temp is 0 , then set same as outside temp
             self.home.set_house_temp(outside_temp)
@@ -59,7 +60,7 @@ class TemperatureCalculator:
             return outside_temp
         else:
             home_device_snapshot = self.home_device_snapshot
-            home_device_snapshot.active_ac()
+            home_device_snapshot.count_ac()
             for ac in home_device_snapshot.active_acs:  # we now have 1 ac , but if we had 2 , we  have to drop by 10c
                 if isinstance(ac.state, HeatingState):  # if it is in heating mode
                     new_temp = self.outside_temp_infulence(  # calculate outside temp influence
@@ -83,7 +84,7 @@ class TemperatureCalculator:
 
 class HumidityCalculator:
     """
-    same philosophy as TemperatureCalculator
+    Calculates the humidity based on the outside humidity and devices
     """
 
     def __init__(self, home_device_snapshot: HomeDeviceSnapshot) -> None:
@@ -91,6 +92,10 @@ class HumidityCalculator:
         self.home_device_snapshot = home_device_snapshot
 
     def outside_humidity_infulence(self, inside_humidity, outside_humidity) -> float:
+        """
+        Calculates the influence of the outside humidity and the 
+        current inside humidity
+        """
         if inside_humidity > outside_humidity:
             inside_humidity -= round(inside_humidity - outside_humidity) / 4
         elif inside_humidity == outside_humidity:
@@ -100,6 +105,9 @@ class HumidityCalculator:
         return inside_humidity
 
     def calculate_humidity(self, outside_humidity) -> float:
+        """
+        Calculates the inside humidity based on the outside humidity and the dehumidifier
+        """
         if self.home.house_humidity == 0:
             self.home.set_house_humidity(outside_humidity)
             return outside_humidity

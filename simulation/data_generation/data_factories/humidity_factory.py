@@ -19,7 +19,9 @@ class HumidityFactory(DataFactory):
         super().__init__(config, timestamps)
 
     def generateData(self):
-
+        """
+        Generates temp data for all timestamps
+        """
         for index, timestamp in enumerate(self.timestamps.timestamps):
             value = HumidityCalculation.generate_humidity(
                 index, self.config)

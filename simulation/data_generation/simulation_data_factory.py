@@ -9,6 +9,11 @@ from simulation.data_generation.simulation_data import SimulationData
 
 
 class SimulationDataFactory:
+
+    """
+    A factory for creating the simulation data
+    """
+
     @staticmethod
     def create_simulation_data(temp_factory: TemperatureFactory, humidity_factory: HumidityFactory, sunlight_factory: SunlightFactory):  # add types
         temp_factory.generateData()

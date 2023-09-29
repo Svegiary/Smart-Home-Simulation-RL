@@ -15,6 +15,12 @@ from simulation.human.human import Human
 
 
 class Home:
+    """
+    This is the class that represents the home structure
+    Each home has rooms , the internal data and a human that 
+    can be placed in rooms
+    """
+
     def __init__(self, rooms: list[Room]):
         self.rooms: Dict[HomeRooms, Room] = {room.name: room for room in rooms}
         self.house_temp: float = 0.0
@@ -23,10 +29,8 @@ class Home:
         self.human: Human = Human()
         # TODO: noise level
 
-    def __getitem__(self, room: HomeRooms) -> Room:
-        return self.rooms.get(room, None)
-
     # Setter for house_temp
+
     def set_house_temp(self, temp: float) -> None:
         self.house_temp = temp
 

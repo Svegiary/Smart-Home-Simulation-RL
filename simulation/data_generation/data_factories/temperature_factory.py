@@ -18,6 +18,9 @@ class TemperatureFactory(DataFactory):
         super().__init__(config, timestamps)
 
     def generateData(self):
+        """
+        Generates temp data for all timestamps
+        """
 
         for index, timestamp in enumerate(self.timestamps.timestamps):
             value = TemperatureCalculation.generate_temperature(

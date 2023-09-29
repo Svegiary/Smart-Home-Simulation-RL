@@ -209,7 +209,7 @@ class HumanMovementRuntime(SimulationRuntime):
 
 class LightBulbRuntime(SimulationRuntime):
     """
-    In this runtime the user can control the ac
+    In this runtime the user can control the room lights
     """
 
     def __init__(self):

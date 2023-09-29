@@ -14,6 +14,9 @@ class PrintDevices:
 
     @staticmethod
     def print(devices: Dict[DeviceType, Device]) -> None:
+        """
+        Print all devices
+        """
         print(devices.items())
         for device_type, device in devices.items():
             RepresentDevice.print(device)

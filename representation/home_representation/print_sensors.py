@@ -11,5 +11,8 @@ class PrintSensors:
 
     @staticmethod
     def print(sensors: List[Sensor]) -> None:
+        """
+        Print all sensors
+        """
         for sensor in sensors:
             RepresentSensor.print(sensor)

@@ -1,5 +1,5 @@
 """
-Represent a device beatifully
+Represents a device
 """
 
 from models.devices.device import Device
@@ -10,6 +10,9 @@ class RepresentDevice:
 
     @staticmethod
     def print(device: Device) -> None:
+        """
+        Represent a device
+        """
         ordered_attributes = OrderedDict()
         ordered_attributes["Name"] = device.name
         ordered_attributes["State"] = device.state

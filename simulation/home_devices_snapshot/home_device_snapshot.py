@@ -12,6 +12,9 @@ from enums.DeviceType import DeviceType
 
 
 class HomeDeviceSnapshot:
+    """
+    This singleton class counts the active devices and saves them to lists
+    """
     _instance = None
 
     def __new__(cls, home: Home):
@@ -28,6 +31,9 @@ class HomeDeviceSnapshot:
         self.active_devices: list[Device] = []
 
     def count_ac(self):
+        """
+        Adds active acs to the list
+        """
         active_ac = []
         for room in self.home.rooms.values():
             for key, device in room.devices.items():
@@ -36,6 +42,9 @@ class HomeDeviceSnapshot:
         self.active_acs = active_ac
 
     def count_lights(self):
+        """
+        Adds active lights to the list
+        """
         active_lights = []
         for key, value in self.home.rooms.items():
             for key, device in value.devices.items():
@@ -44,6 +53,9 @@ class HomeDeviceSnapshot:
         self.active_lights = active_lights
 
     def count_dehumidifers(self):
+        """
+        Adds active dehumidiers to the list
+        """
         active_dehumidiers = []
         for room in self.home.rooms.values():
             for key, device in room.devices.items():
@@ -52,6 +64,9 @@ class HomeDeviceSnapshot:
         self.active_dehumidifers = active_dehumidiers
 
     def count_all(self) -> None:
+        """
+        Adds all active devices to the list
+        """
         self.count_ac()
         self.count_lights()
         self.count_dehumidifers()

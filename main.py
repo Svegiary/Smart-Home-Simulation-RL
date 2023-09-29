@@ -45,7 +45,7 @@ print(data.temp_data)
 print(data.sunlight_data)
 print(data.humidity_data)
 
-home = HomeFactory().create_home()
+home = HomeFactory.create_home()
 
 PrintHome.print(home)
 commands = CommandFactory.create_commands(home)

@@ -19,7 +19,12 @@ from enums.DeviceType import DeviceType
 
 
 class HomeFactory:
-    def create_home(self):
+
+    @staticmethod
+    def create_home() -> Home:
+        """
+        Create a home that has 4 rooms , a light in each room. The living room also has an ac and dehumidifier
+        """
         living_room = Room(HomeRooms.LIVING_ROOM)
         bedroom_room = Room(HomeRooms.BEDROOM)
         kitchen = Room(HomeRooms.KITCHEN)

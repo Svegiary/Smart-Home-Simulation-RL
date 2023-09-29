@@ -43,7 +43,8 @@ class TemperatureCalculator:
         self.home = home_device_snapshot.home
         self.home_device_snapshot = home_device_snapshot
 
-    def outside_temp_infulence(self, inside_temp, outside_temp) -> float:
+    @staticmethod
+    def outside_temp_infulence(inside_temp, outside_temp) -> float:
         """
         Calculates the influence of the outside temperature and the 
         current inside temperature
@@ -97,7 +98,8 @@ class HumidityCalculator:
         self.home = home_device_snapshot.home
         self.home_device_snapshot = home_device_snapshot
 
-    def outside_humidity_infulence(self, inside_humidity, outside_humidity) -> float:
+    @staticmethod
+    def outside_humidity_infulence(inside_humidity, outside_humidity) -> float:
         """
         Calculates the influence of the outside humidity and the 
         current inside humidity
@@ -142,7 +144,8 @@ class LuminanceCalculator:
         self.home = home_device_snapshot.home
         self.home_device_snapshot = home_device_snapshot
 
-    def _new_luminance(self, sunlight: float, brightness: int) -> float:
+    @staticmethod
+    def _new_luminance(sunlight: float, brightness: int) -> float:
         """
         Calculates new luminance with sunlight and light brightness. Returns max 1.0
         """

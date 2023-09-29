@@ -29,6 +29,8 @@ class SimulationConfig:
         self.min_temp: float = None
         self.max_humidity: float = None
         self.min_humidity: float = None
+        self.min_luminance: float = None
+        self.max_luminance: float = None
 
     def set_constraints(self, constraints: Dict[str, float]):
         """
@@ -38,6 +40,8 @@ class SimulationConfig:
         self.min_temp = constraints["min_temp"]
         self.max_humidity = constraints["max_humidity"]
         self.min_humidity = constraints["min_humidity"]
+        self.min_luminance = constraints["min_luminance"]
+        self.max_luminance = constraints["max_luminance"]
 
     def set_simulation_params(self, simulation_params: Dict[str, int]):
         """

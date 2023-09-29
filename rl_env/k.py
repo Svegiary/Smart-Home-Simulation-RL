@@ -8,6 +8,7 @@ from factory.command_factory.command_factory import CommandFactory
 from factory.home_factory.home_factory import HomeFactory
 from models.command.device_command import DeviceCommand
 from models.command.invoker import Invoker
+from rl_env.math_functions import MathFunctions
 from simulation.Simulation import Simulation
 from simulation.SimulationRuntime import LightBulbRuntime
 
@@ -24,7 +25,7 @@ class SimulationEnv(gym.Env):
     """Custom Environment that follows gym interface"""
 
     def __init__(self):
-        super(CustomEnv, self).__init__()
+        super(SimulationEnv, self).__init__()
         # Define action and observation space
         # They must be gym.spaces objects
         # Example when using discrete actions:
@@ -32,6 +33,12 @@ class SimulationEnv(gym.Env):
         # Example for using image as input (channel-first; channel-last also works):
         self.observation_space = spaces.Box(low=0, high=255,
                                             shape=(N_CHANNELS, HEIGHT, WIDTH), dtype=np.uint8)
+
+    def temp_evaluation(self, current_temp: float):
+        return MathFunctions.temp_reward(current_temp,
+                                         self.preferences.target_temp,
+                                         self.config,
+                                         )
 
     def step(self, action: DeviceCommand):
         try:
@@ -66,7 +73,10 @@ class SimulationEnv(gym.Env):
             "min_temp": 10,
             "max_humidity": 100,
             "min_humidity": 0,
+            "min_luminance": 0.0,
+            "max_luminance": 1.0
         }
+        print(constraints)
 
         self.config.set_constraints(constraints)
 
@@ -131,7 +141,7 @@ class SimulationEnv(gym.Env):
             self.preferences.target_hum,
             self.preferences.target_luminance,
             self.invoker.command_history,
-            snapshot.current_power
+            self.snapshot.current_power
         ]
 
         return self.observation

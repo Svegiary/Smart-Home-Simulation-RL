@@ -7,10 +7,14 @@ from simulation.config.simulation_config import SimulationConfig
 class TemperatureCalculation:
 
     @staticmethod
-    def generate_temperature(index: int, duration_hours: int, config: SimulationConfig) -> float:
+    def generate_temperature(index: int,  config: SimulationConfig) -> float:
+        """
+        Generates temp value for a give timestamp
+        """
 
         # Calculate the total number of timestamps in the simulation.
-        no_timestamps = duration_hours / (config.time_interval / 60)
+        no_timestamps = config.simulation_duration / \
+            (config.time_interval / 60)
 
         if index < no_timestamps / 2:
             # In the first half, temperature rises from min_temp to max_temp linearly.

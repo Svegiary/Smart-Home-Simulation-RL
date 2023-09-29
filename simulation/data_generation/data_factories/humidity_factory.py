@@ -11,6 +11,10 @@ from simulation.data_generation.timestamp_generation.timestamp import TimestampG
 
 
 class HumidityFactory(DataFactory):
+    """
+    Factory for creating a humidity value for each timestamp
+    """
+
     def __init__(self, config: SimulationConfig, timestamps: TimestampGeneration):
         super().__init__(config, timestamps)
 
@@ -18,5 +22,5 @@ class HumidityFactory(DataFactory):
 
         for index, timestamp in enumerate(self.timestamps.timestamps):
             value = HumidityCalculation.generate_humidity(
-                index, self.config.simulation_duration, self.config)
+                index, self.config)
             self.data[timestamp] = value

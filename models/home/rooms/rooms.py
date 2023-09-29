@@ -49,6 +49,10 @@ class Room:
         """Attach a sensor to the room"""
         return self.sensors.remove(sensor)
 
+    def set_luminance(self, luminance: float) -> None:
+        """Setter for room luminance"""
+        self.luminance = luminance
+
     def place_human(self) -> None:
         """Place a human to this room"""
         self.is_human_inside = True

@@ -10,6 +10,10 @@ from simulation.data_generation.timestamp_generation.timestamp import TimestampG
 
 
 class TemperatureFactory(DataFactory):
+    """
+    Factory for creating a temperature value for each timestamp
+    """
+
     def __init__(self, config: SimulationConfig, timestamps: TimestampGeneration):
         super().__init__(config, timestamps)
 
@@ -17,5 +21,5 @@ class TemperatureFactory(DataFactory):
 
         for index, timestamp in enumerate(self.timestamps.timestamps):
             value = TemperatureCalculation.generate_temperature(
-                index, self.config.simulation_duration, self.config)
+                index, self.config)
             self.data[timestamp] = value

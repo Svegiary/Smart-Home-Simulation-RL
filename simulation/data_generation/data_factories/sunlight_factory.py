@@ -11,6 +11,10 @@ from simulation.data_generation.timestamp_generation.timestamp import TimestampG
 
 
 class SunlightFactory(DataFactory):
+    """
+    Factory for creating a sunlight value for each timestamp
+    """
+
     def __init__(self, config: SimulationConfig, timestamps: TimestampGeneration):
         super().__init__(config, timestamps)
 
@@ -18,5 +22,5 @@ class SunlightFactory(DataFactory):
 
         for index, timestamp in enumerate(self.timestamps.timestamps):
             value = SunlightCalculation.generate_sunlight(
-                index, self.config.simulation_duration, self.config)
+                index, self.config)
             self.data[timestamp] = value

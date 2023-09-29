@@ -142,6 +142,7 @@ class SimulationEnv(gym.Env):
             self.preferences.target_luminance,
             self.invoker.command_history,
             self.snapshot.current_power
+            self.snapshot.human_location
         ]
 
         return self.observation

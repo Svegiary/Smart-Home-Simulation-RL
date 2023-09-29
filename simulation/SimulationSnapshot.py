@@ -46,5 +46,5 @@ class SimulationSnapshot:
         print("-----------------------------------------------")
         print("Human location : ", self.human_location.name)
         print("-----------------------------------------------")
-        print("Energy Consumption : ", self.current_power)
+        print("Snapshot Energy Consumption : ", self.current_power)
         print("-----------------------------------------------")

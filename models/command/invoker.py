@@ -19,8 +19,11 @@ class Invoker:
     def __new__(cls):
         if cls._instance is None:
             cls._instance = super(Invoker, cls).__new__(cls)
-            cls._instance.command_history = []
+            cls._instance.initialize()
         return cls._instance
+
+    def initialize(self) -> None:
+        self.command_history = []
 
     def execute(self, command: DeviceCommand) -> None:
         command.execute()

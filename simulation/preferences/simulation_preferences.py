@@ -14,10 +14,10 @@ class Preferences:
         self.target_temp = None
         self.target_hum = None
         self.target_luminance = None
-        self.target_noise = None
+        # self.target_noise = None
 
     def set_preferences(self, preferences: Dict):
         self.target_temp = preferences["target_temp"]
         self.target_hum = preferences["target_humidity"]
         self.target_luminance = preferences["target_luminance"]
-        self.target_noise = preferences["target_noise"]
+        # self.target_noise = preferences["target_noise"]

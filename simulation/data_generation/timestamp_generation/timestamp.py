@@ -27,3 +27,7 @@ class TimestampGeneration:
         while starting_time < end_time:
             self.timestamps.append(starting_time)
             starting_time += self.config.time_interval * 60
+
+    def timestamp_iterator(self):
+        for timestamp in self.timestamps:
+            yield timestamp

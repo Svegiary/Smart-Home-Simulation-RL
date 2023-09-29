@@ -1,19 +1,9 @@
-from enums.DeviceType import DeviceType
-from enums.Rooms import HomeRooms
-from factory.command_factory.command_factory import CommandFactory
-from factory.home_factory.home_factory import HomeFactory
-from models.command.ac_commands import *
-from models.command.invoker import Invoker
-from representation.home_representation.print_home import PrintHome
-from simulation.Simulation import Simulation
-from simulation.SimulationController import SimulationController
+from rl_env.math_functions import MathFunctions
 from simulation.config.simulation_config import SimulationConfig
-from simulation.data_generation.data_factories.humidity_factory import HumidityFactory
-from simulation.data_generation.data_factories.sunlight_factory import SunlightFactory
-from simulation.data_generation.data_factories.temperature_factory import TemperatureFactory
-from simulation.data_generation.simulation_data_factory import SimulationDataFactory
-from simulation.data_generation.timestamp_generation.timestamp import TimestampGeneration
-from simulation.SimulationRuntime import *
+
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 config = SimulationConfig()
 constraints = {
@@ -31,41 +21,22 @@ simulation_params = {
 }
 config.set_simulation_params(simulation_params)
 
-timestamps = TimestampGeneration(config)
-timestamps.generate_timestamps()
 
-temp_factory = TemperatureFactory(config, timestamps)
-humidity_factory = HumidityFactory(config, timestamps)
-sunlight_factory = SunlightFactory(config, timestamps)
+f = MathFunctions(config)
 
-data = SimulationDataFactory.create_simulation_data(
-    temp_factory, humidity_factory, sunlight_factory)
+current_temps = np.linspace(10.1, 29.9, 400)
 
-print(data.temp_data)
-print(data.sunlight_data)
-print(data.humidity_data)
 
-home = HomeFactory.create_home()
+a = 20*2
+rewards = [f.temp_reward(temp, 28, a)
+           for temp in current_temps]  # Calculate rewards
 
-PrintHome.print(home)
-commands = CommandFactory.create_commands(home)
-
-home.place_human(HomeRooms.LIVING_ROOM)
-
-sim = Simulation(
-    timestamps,
-    data,
-    home,
-    SimulationController(commands,
-                         Invoker(),
-                         home
-                         ),
-    config
-)
-print("setting runtime")
-
-sim.set_runtime_plan(LightBulbRuntime())
-print(timestamps)
-print("starting runtime //////////////////////////////////////////////////////////////////////////////////")
-sim.start()
-print("finished runtime //////////////////////////////////////////////////////////////////////////////////")
+# Plot the temp_reward function
+plt.figure(figsize=(8, 6))
+plt.plot(current_temps, rewards, label='temp_reward function')
+plt.xlabel('Current Temperature')
+plt.ylabel('Reward')
+plt.title('Plot of temp_reward Function')
+plt.legend()
+plt.grid(True)
+plt.show()

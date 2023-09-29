@@ -27,7 +27,6 @@ class Simulation:
             timestamps_generator: TimestampGeneration,
             simulation_data:  SimulationData,
             home: Home,
-            controller: SimulationController,
             config: SimulationConfig,
     ) -> None:
 
@@ -36,7 +35,6 @@ class Simulation:
         self.simulation_data = simulation_data
         self.home = home
         self.simulation_runtime_plan = NoRuntime()  # Default to NoRuntime
-        self.controller = controller  # temporary controller for excecuting actions
         self.config = config
 
     def set_runtime_plan(self, runtime_plan: SimulationRuntime) -> None:

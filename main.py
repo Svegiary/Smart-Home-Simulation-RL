@@ -58,13 +58,14 @@ sim = Simulation(
     data,
     home,
     SimulationController(command_Factory.commands,
-                         Invoker()
+                         Invoker(),
+                         home
                          ),
     config
 )
 print("setting runtime")
 
-sim.set_runtime_plan(ControllerAcRuntime())
+sim.set_runtime_plan(LightBulbRuntime())
 print(timestamps)
 print("starting runtime //////////////////////////////////////////////////////////////////////////////////")
 sim.start()

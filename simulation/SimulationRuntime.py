@@ -205,3 +205,73 @@ class HumanMovementRuntime(SimulationRuntime):
                     print("invalid action")
                     continue
             print("------------------------------------")
+
+
+class LightBulbRuntime(SimulationRuntime):
+    """
+    In this runtime the user can control the ac
+    """
+
+    def __init__(self):
+        super().__init__()
+
+    def start(self, sim):
+        wait = True
+        for timestamp in sim.timestamps:
+            snapshot = sim.extract_snapshot(timestamp)
+            self.snapshots.append(snapshot)
+            snapshot.print()
+
+            print("Actions")
+            print("1) Togle Living room light")
+            print("2) Togle bath room light")
+            print("3) Togle kitchen light")
+            print("4) Togle bedroom light")
+            print("5) Change Living Room Light brightness ")
+            print("6) Do nothing ")
+            print("7) Skip to end")
+            if wait:
+                while True:
+                    command = input("Option:")
+
+                    if command == "1":
+
+                        sim.controller.togle_light(HomeRooms.LIVING_ROOM)
+                        break
+                    elif command == "2":
+                        sim.controller.togle_light(HomeRooms.BATHROOM)
+                        break
+                    elif command == "3":
+                        sim.controller.togle_light(HomeRooms.KITCHEN)
+                        break
+                    elif command == "4":
+                        sim.controller.togle_light(HomeRooms.BEDROOM)
+                        break
+                    elif command == "5":
+                        while True:
+                            brightness = input("Input brightness: ")
+                            if int(brightness) in range(10, 101, 10):
+                                sim.controller.set_light_brightness(
+                                    HomeRooms.LIVING_ROOM, int(brightness))
+                                break
+                            else:
+                                print("invalid brightness")
+                                continue
+                        break
+                    elif command == "6":
+
+                        break
+                    elif command == "7":
+                        wait = False
+                        break
+                    else:
+                        print("invalid action")
+            else:
+                continue
+
+            print("------------------------------------")
+        print("------------------------------------")
+        print(Back.RED, Fore.BLACK, "Simulation ended :", Back.BLACK, Fore.WHITE)
+        print(Back.WHITE, Fore.BLACK, "Total Energy Consumption: ",
+              PowerCalculator.calculate_total_energy(self.snapshots), Back.BLACK, Fore.WHITE)
+        print("------------------------------------")

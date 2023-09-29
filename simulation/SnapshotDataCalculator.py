@@ -159,7 +159,8 @@ class LuminanceCalculator:
         for room_name, room in self.home.rooms.items():
             light = room.devices[DeviceType.LIGHT]
             if isinstance(light.state, LightBulbStates.OnState):
-                new_luminance = self._new_luminance(sunlight, light.brightness)
+                new_luminance = self._new_luminance(
+                    sunlight, light.state._brightness)
                 room.set_luminance(new_luminance)
                 room_luminance[room_name] = new_luminance
             else:

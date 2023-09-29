@@ -59,7 +59,7 @@ class SimulationSnapshot:
               )
         print(Back.BLACK, "")
         print(Fore.BLACK, Back.WHITE, "Kitchen Luminance: ",
-              Back.BLACK, Fore.WHITE, self.luminances[HomeRooms.LIVING_ROOM],
+              Back.BLACK, Fore.WHITE, self.luminances[HomeRooms.KITCHEN],
               Fore.BLACK, Back.WHITE, "Bathroom Luminance: ",
               Back.BLACK, Fore.WHITE, self.luminances[HomeRooms.BEDROOM]
               )

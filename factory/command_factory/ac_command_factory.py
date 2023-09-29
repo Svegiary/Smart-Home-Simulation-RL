@@ -9,11 +9,10 @@ from models.command.ac_commands import *
 
 class ACCommandFactory:
 
-    def __init__(self, ac: AirConditioner):
-        self.ac = ac
-        self.commands = []
-
-    def create_commands(self):
-        self.commands.append(ACSetCoolingCommand(self.ac))
-        self.commands.append(ACSetHeatingCommand(self.ac))
-        self.commands.append(ACTurnOffCommand(self.ac))
+    @staticmethod
+    def create_commands(ac: AirConditioner) -> list[DeviceCommand]:
+        commands = []
+        commands.append(ACSetCoolingCommand(ac))
+        commands.append(ACSetHeatingCommand(ac))
+        commands.append(ACTurnOffCommand(ac))
+        return commands

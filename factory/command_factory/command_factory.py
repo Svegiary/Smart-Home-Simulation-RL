@@ -11,23 +11,27 @@ from models.command.device_command import DeviceCommand
 from models.home.home import Home
 
 
-class CommandFactory():
-    def __init__(self, home: Home):
-        self.home = home
-        self.commands: list[DeviceCommand] = []
+class CommandFactory:
+    """
+    Centralized command factory for creating all available commands
+    for each device in the house. 
+    """
 
-    def create_commands(self):
-        for room in self.home.rooms.values():
+    @staticmethod
+    def create_commands(home: Home) -> tuple[DeviceCommand]:
+        """
+        Creating commands for all devices. Returns a tuple
+        """
+        commands = []
+        for room in home.rooms.values():
             for device_type, device in room.devices.items():
                 if device_type == DeviceType.AC:
-                    ac_factory = ACCommandFactory(device)
-                    ac_factory.create_commands()
-                    self.commands += ac_factory.commands
+                    commands += ACCommandFactory.create_commands(device)
+
                 if device_type == DeviceType.LIGHT:
-                    light_factory = LightBulbCommandFactory(device)
-                    light_factory.create_commands()
-                    self.commands += light_factory.commands
+
+                    commands += LightBulbCommandFactory.create_commands(device)
                 if device_type == DeviceType.DEHUMIDIFIER:
-                    dehumidifier_factory = DehumidifierCommandFactory(device)
-                    dehumidifier_factory.create_commands()
-                    self.commands += dehumidifier_factory.commands
+                    commands += DehumidifierCommandFactory.create_commands(
+                        device)
+        return tuple(commands)

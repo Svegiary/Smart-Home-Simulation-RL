@@ -48,8 +48,7 @@ print(data.humidity_data)
 home = HomeFactory().create_home()
 
 PrintHome.print(home)
-command_Factory = CommandFactory(home)
-command_Factory.create_commands()
+commands = CommandFactory.create_commands(home)
 
 home.place_human(HomeRooms.LIVING_ROOM)
 
@@ -57,7 +56,7 @@ sim = Simulation(
     timestamps,
     data,
     home,
-    SimulationController(command_Factory.commands,
+    SimulationController(commands,
                          Invoker(),
                          home
                          ),

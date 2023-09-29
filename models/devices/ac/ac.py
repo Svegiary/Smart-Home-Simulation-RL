@@ -41,6 +41,3 @@ class AirConditioner(Device):
         self.state.turn_off()
         self.state = OffState()
         return self.state
-
-    def current_power(self) -> int:  # TODO: implement correctly
-        return self.state.power_consumption(self.power_consumption)

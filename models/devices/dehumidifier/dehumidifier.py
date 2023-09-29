@@ -43,7 +43,3 @@ class Dehumidifier(Device):
         self.state = OnState()
         # Return the new state
         return self.state
-
-    def current_power(self) -> int:
-        # Return the power consumption of the current state
-        return self.state.power_consumption(self.power_consumption)

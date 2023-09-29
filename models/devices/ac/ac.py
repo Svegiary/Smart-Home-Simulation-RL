@@ -42,6 +42,5 @@ class AirConditioner(Device):
         self.state = OffState()
         return self.state
 
-    @property
     def current_power(self) -> int:  # TODO: implement correctly
-        return self.state.power_consumption
+        return self.state.power_consumption(self.power_consumption)

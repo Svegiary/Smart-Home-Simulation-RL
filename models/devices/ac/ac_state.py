@@ -38,9 +38,8 @@ class ACState(DeviceState, ABC):
         pass
 
     # Abstract property to get the power consumption of the AC device
-    @property
     @abstractmethod
-    def power_consumption(self):
+    def power_consumption(self, power: int):
         pass
 
 # Define a concrete class HeatingState that inherits from ACState
@@ -65,10 +64,8 @@ class HeatingState(ACState):
         print("AC in cooling mode")
 
     # Property to get the power consumption of the AC device when in this state
-    @property
-    def power_consumption(self):
-        self.current_power = 2000  # Assuming a power consumption of 2000 watts
-        return 2000
+    def power_consumption(self, power: int):
+        return power
 
 # Define a concrete class CoolingState that inherits from ACState
 
@@ -88,14 +85,12 @@ class CoolingState(ACState):
         print("AC in heating mode")
 
     # Method to set the AC device to cooling mode
-    def set_cooling(self):
+    def set_cooling(self) -> None:
         print("AC in Cooling mode")
 
     # Property to get the power consumption of the AC device when in this state
-    @property
-    def power_consumption(self):
-        self.current_power = 2000  # Assuming a power consumption of 2000 watts
-        return 2000
+    def power_consumption(self, power: int) -> int:
+        return power
 
 # Define a concrete class OffState that inherits from ACState
 

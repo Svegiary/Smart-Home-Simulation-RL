@@ -35,3 +35,7 @@ class Device(ABC):
     @abstractmethod
     def turn_off(self) -> DeviceState:
         pass
+
+    @abstractmethod
+    def current_power(self) -> int:
+        pass

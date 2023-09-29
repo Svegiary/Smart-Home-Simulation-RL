@@ -13,3 +13,10 @@ class SimulationData:
         self.temp_data = temp_data
         self.humidity_data = humidity_data
         self.sunlight_data = sunlight_data
+
+    def get_data_for_timestamp(self, timestamp: int) -> Dict[str, float]:
+        return {
+            "temp": self.temp_data[timestamp],
+            "sunlight": self.sunlight_data[timestamp],
+            "humidity": self.humidity_data[timestamp]
+        }

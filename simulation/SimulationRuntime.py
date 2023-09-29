@@ -9,6 +9,8 @@ from models.command.invoker import Invoker
 
 from simulation.SimulationSnapshot import SimulationSnapshot
 from simulation.power_calculator.power_calculator import PowerCalculator
+from colorama import Fore, Back, Style
+from termcolor import colored
 
 
 class SimulationRuntime(ABC):
@@ -47,7 +49,8 @@ class DefaultRuntime(SimulationRuntime):
             self.snapshots.append(snapshot)
             snapshot.print()
             sleep(0.1)
-        print("Simulation ended :")
+
+        print(Back.RED, Fore.BLACK, "Simulation ended :")
         print("Total Energy Consumption: ",
               PowerCalculator.calculate_total_power_consumption(self.snapshots))
 
@@ -119,9 +122,9 @@ class ControllerAcRuntime(SimulationRuntime):
 
             print("------------------------------------")
         print("------------------------------------")
-        print("Simulation ended :")
-        print("Total Energy Consumption: ",
-              PowerCalculator.calculate_total_energy(self.snapshots))
+        print(Back.RED, Fore.BLACK, "Simulation ended :", Back.BLACK, Fore.WHITE)
+        print(Back.WHITE, Fore.BLACK, "Total Energy Consumption: ",
+              PowerCalculator.calculate_total_energy(self.snapshots), Back.BLACK, Fore.WHITE)
         print("------------------------------------")
 
 

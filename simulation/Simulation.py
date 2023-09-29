@@ -53,13 +53,12 @@ class Simulation:
         self.simulation_runtime_plan.start(self)
 
     #
-    def extract_snapshot(self, timestamp) -> SimulationSnapshot:
+    def extract_snapshot(self, timestamp: int) -> SimulationSnapshot:
         """
         Method to extract a simulation snapshot at a given timestamp
         """
         return SimulationSnapshot(
-            self.simulation_data.temp_data[timestamp],
-            self.simulation_data.humidity_data[timestamp],
+            self.simulation_data.get_data_for_timestamp(timestamp),
             self.home.human,
             SnapshotDataCalculator(HomeDeviceSnapshot(self.home))
         )

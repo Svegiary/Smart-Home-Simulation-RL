@@ -51,3 +51,6 @@ class LightBulb(Device):
         self.state.set_brightness(brightness)
         # Return the new state
         return self.state
+
+    def current_power(self) -> int:
+        return super().power_consumption(self.power_consumption)

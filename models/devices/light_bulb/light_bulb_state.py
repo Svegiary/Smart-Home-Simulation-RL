@@ -50,10 +50,10 @@ class OnState(LightBulbState):
 
     # Constructor for the OnState class
     def __init__(self):
-        brightness = 100
+        self._brightness = 100
 
         # Call the constructor of the parent class (LightBulbState) and initialize brightness and color_temp
-        super().__init__(brightness)
+        super().__init__(self._brightness)
 
     # Method to turn on the light bulb
     def turn_on(self) -> LightBulbState:
@@ -67,13 +67,9 @@ class OnState(LightBulbState):
 
     def set_brightness(self, brightness) -> LightBulbState:
         self._brightness = brightness
-        self._power_consumption = 0  # Set power consumption to 0 when turned on
 
-    # Property to get the power consumption of the light bulb
-    @property
-    def power_consumption(self):
-        self.current_power = 5  # Assuming a power consumption of 5 watts when turned on
-        return self.current_power
+    def power_consumption(self, power) -> int:
+        return power * (self._brightness / 100)
 
 
 # Define a concrete class OffState that inherits from LightBulbState
@@ -101,7 +97,5 @@ class OffState(LightBulbState):
     def set_brightness(self, brightness) -> None:
         print("The Light Bulb is off")
 
-    # Property to get the power consumption of the light bulb when it's off (zero power consumption)
-    @property
-    def power_consumption(self) -> int:
+    def power_consumption(self, power) -> int:
         return 0

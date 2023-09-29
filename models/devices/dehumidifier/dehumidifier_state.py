@@ -19,14 +19,13 @@ class DehumidifierState(DeviceState, ABC):
         super().__init__()
 
     @abstractmethod
-    def turn_off(self):
+    def turn_off(self) -> None:
         pass
 
     @abstractmethod
-    def turn_on(self):
+    def turn_on(self) -> None:
         pass
 
-    @property
     def power_consumption(self):
         pass
 
@@ -35,15 +34,13 @@ class OffState(DehumidifierState):
     def __init__(self):
         super().__init__()
 
-    def turn_off(self):
+    def turn_off(self) -> None:
         print("Dehumidifier is off")
 
-    def turn_on(self):
+    def turn_on(self) -> None:
         print("Turing on Dehumidier")
 
-    @property
-    def power_consumption(self):
-        self.current_power = 0
+    def power_consumption(self, power) -> int:
         return 0
 
 
@@ -51,13 +48,11 @@ class OnState(DehumidifierState):
     def __init__(self):
         super().__init__()
 
-    def turn_off(self):
+    def turn_off(self) -> None:
         print("Turing off Dehumidier")
 
-    def turn_on(self):
+    def turn_on(self) -> None:
         print("Dehumidifier is on")
 
-    @property
-    def power_consumption(self):
-        self.current_power = 100
-        return 100
+    def power_consumption(self, power) -> int:
+        return power

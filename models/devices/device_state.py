@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 class DeviceState(ABC):
 
     def __init__(self):
-        self.current_power = 0
+        pass
 
     @abstractmethod
     def turn_off(self):

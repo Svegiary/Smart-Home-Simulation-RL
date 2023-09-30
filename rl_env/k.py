@@ -3,12 +3,16 @@ import gym
 
 import gym
 from gym import spaces
+import numpy as np
 from enums.Rooms import HomeRooms
 from factory.command_factory.command_factory import CommandFactory
 from factory.home_factory.home_factory import HomeFactory
 from models.command.device_command import DeviceCommand
 from models.command.invoker import Invoker
 from rl_env.math_functions import MathFunctions
+from rl_env.reward_calculation import RewardCalculation
+from rl_env.reward_normalization.normalization import Normalization
+from rl_env.reward_normalization.normalization_strategy import MinMaxNormalization
 from simulation.Simulation import Simulation
 from simulation.SimulationRuntime import LightBulbRuntime
 
@@ -29,16 +33,10 @@ class SimulationEnv(gym.Env):
         # Define action and observation space
         # They must be gym.spaces objects
         # Example when using discrete actions:
-        self.action_space = spaces.Discrete(N_DISCRETE_ACTIONS)
+        self.action_space = spaces.Discrete(len(self.commands))
         # Example for using image as input (channel-first; channel-last also works):
         self.observation_space = spaces.Box(low=0, high=255,
-                                            shape=(N_CHANNELS, HEIGHT, WIDTH), dtype=np.uint8)
-
-    def temp_evaluation(self, current_temp: float):
-        return MathFunctions.temp_reward(current_temp,
-                                         self.preferences.target_temp,
-                                         self.config,
-                                         )
+                                            shape=(), dtype=np.float32)
 
     def step(self, action: DeviceCommand):
         try:
@@ -49,19 +47,36 @@ class SimulationEnv(gym.Env):
 
         self.invoker.execute(action)
         self.snapshot = self.sim.extract_snapshot(timestamp)
+        human_location = self.snapshot.human_location
+
+        reward_calculation = RewardCalculation(
+            self.snapshot,
+            self.preferences,
+            self.config
+        )
+
+        temp_reward = reward_calculation.temp_reward()
+        humidity_reward = reward_calculation.humidity_reward()
+        luminance_reward = reward_calculation.luminance_reward()
+        power_reward = reward_calculation.power_reward()
+
+        self.reward += temp_reward + humidity_reward + luminance_reward + power_reward
 
         self.observation = [
             self.home.house_temp,
             self.home.house_humidity,
-            self.home.house_light,
+            self.home.rooms[human_location.name].luminance,
             self.preferences.target_temp,
             self.preferences.target_hum,
             self.preferences.target_luminance,
-            self.invoker.command_history,
-            self.snapshot.current_power
+            *self.invoker.command_history,
+            self.snapshot.current_power,
+            self.snapshot.human_location
         ]
 
-        return self.observation, reward, done, info
+        self.observation = np.array(self.observation)
+
+        return self.observation, self.reward, self.done, self.info
 
     def reset(self):
 
@@ -140,10 +155,12 @@ class SimulationEnv(gym.Env):
             self.preferences.target_temp,
             self.preferences.target_hum,
             self.preferences.target_luminance,
-            self.invoker.command_history,
-            self.snapshot.current_power
+            *self.invoker.command_history,
+            self.snapshot.current_power,
             self.snapshot.human_location
         ]
+
+        self.observation = np.array(self.observation)
 
         return self.observation
 

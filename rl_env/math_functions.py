@@ -13,7 +13,6 @@ class MathFunctions:
             return math.log(current_temp - (target_temp - (config.max_temp - config.min_temp)), 2)
 
         elif current_temp > target_temp and current_temp <= config.max_temp:
-            print("current_temp", current_temp)
 
             return math.log(config.max_temp + (target_temp - config.min_temp) - current_temp, 2)
 

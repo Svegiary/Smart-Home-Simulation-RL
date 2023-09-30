@@ -1,3 +1,4 @@
+from models.devices.device import Device
 from simulation.SimulationSnapshot import SimulationSnapshot
 from simulation.config.simulation_config import SimulationConfig
 from simulation.home_devices_snapshot.home_device_snapshot import HomeDeviceSnapshot
@@ -26,6 +27,7 @@ class PowerCalculator:
         device_snapshot.count_all()
         total_power = 0.0
         for device in device_snapshot.active_devices:
+
             device_power = device.current_power()
             energy = PowerCalculator.kwh(device_power)
             total_power += energy
@@ -38,3 +40,10 @@ class PowerCalculator:
         """
         total_power = sum(snapshot.current_power for snapshot in snapshots)
         return total_power
+
+    def theoretical_max_evergy(self, devices: list[Device]) -> float:
+        total_energy = 0.0
+        for device in devices:
+            device_power = PowerCalculator.kwh(device.power_consumption)
+            total_energy += device_power
+        return total_energy
